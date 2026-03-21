@@ -786,8 +786,8 @@ nav.sticky{
 }
 .field-error{
   display:block;
-  color:#f47b8a;
-  font-size:0.7rem;
+  color:#ff6b7a;
+  font-size:0.75rem;font-weight:500;
   margin-top:0.35rem;
   letter-spacing:0.05em;
   animation:fadeInErr 0.25s ease;
@@ -1562,23 +1562,27 @@ if(phoneInput){
 // ── BOOKING FORM
 document.getElementById('bookForm').addEventListener('submit',async e=>{
   e.preventDefault();
+  // Clear old errors
+  e.target.querySelectorAll('.field-error').forEach(el=>el.remove());
+  e.target.querySelectorAll('[required]').forEach(el=>el.style.borderColor='');
   // Validate required fields
   const reqs=[...e.target.querySelectorAll('[required]')];
   let ok=true;
   reqs.forEach(f=>{
-    const existing=f.parentNode.querySelector('.field-error');
-    if(existing)existing.remove();
     if(!f.value.trim()){
-      f.style.borderColor='#c94a4a';ok=false;
-      const err=document.createElement('span');
-      err.className='field-error';
-      err.textContent=f.tagName==='SELECT'?'Please select a service':
-                      f.type==='date'?'Please choose a date':
-                      f.type==='email'?'Please enter a valid email':
-                      f.name==='first_name'?'First name is required':
-                      f.name==='last_name'?'Last name is required':'This field is required';
-      f.parentNode.appendChild(err);
-      setTimeout(()=>{f.style.borderColor='';err.remove();},4000);
+      ok=false;
+      f.style.borderColor='#e05555';
+      const msg = f.tagName==='SELECT' ? 'Please select a service' :
+                  f.type==='date'       ? 'Please choose a date' :
+                  f.type==='email'      ? 'Please enter a valid email' :
+                  f.name==='first_name' ? 'First name is required' :
+                  f.name==='last_name'  ? 'Last name is required' :
+                                          'This field is required';
+      const err = document.createElement('span');
+      err.className = 'field-error';
+      err.textContent = msg;
+      f.insertAdjacentElement('afterend', err);
+      setTimeout(()=>{f.style.borderColor='';err.remove();}, 5000);
     }
   });
   if(!ok)return;
