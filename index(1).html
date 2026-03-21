@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>YesiMakeup — Luxury Makeup Artistry · Chicago</title>
+<meta name="description" content="Chicago's premier luxury makeup artist. Bridal, glam, editorial & more. Book your transformation."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;0,6..96,700;1,6..96,300;1,6..96,400;1,6..96,700&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════
+   YESIMAKEUP V2 — ULTRA LUXURY EDITORIAL
+   Aesthetic: Pat McGrath meets Vogue Paris
+   Palette: Obsidian / Champagne / Blush
+═══════════════════════════════════════════ */
+
+:root {
+  --black:   #060504;
+  --deep:    #0e0b09;
+  --card:    #141109;
+  --gold:    #c8924a;
+  --gold2:   #e8b86d;
+  --blush:   #d4a898;
+  --cream:   #faf3ec;
+  --white:   #ffffff;
+  --muted:   #7a6a5e;
+  --border:  rgba(200,146,74,0.2);
+  --glass:   rgba(255,255,255,0.03);
+  --bd: 'Bodoni Moda', Georgia, serif;
+  --out: 'Outfit', sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--black);
+  color:var(--cream);
+  font-family:var(--out);
+  font-weight:300;
+  overflow-x:hidden;
+  cursor:none;
+}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--gold);color:var(--black)}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--gold)}
+
+/* ── LOADER ── */
+#loader{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--black);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:1.5rem;
+  transition:opacity 0.8s ease, visibility 0.8s ease;
+}
+#loader.hide{opacity:0;visibility:hidden}
+.loader-logo{
+  font-family:var(--bd);font-size:2rem;font-weight:300;
+  letter-spacing:0.3em;color:var(--gold);
+  animation:loaderPulse 1.5s ease-in-out infinite;
+}
+@keyframes loaderPulse{0%,100%{opacity:0.4}50%{opacity:1}}
+.loader-bar{
+  width:120px;height:1px;background:rgba(200,146,74,0.2);
+  position:relative;overflow:hidden;
+}
+.loader-bar::after{
+  content:'';position:absolute;top:0;left:-100%;
+  width:100%;height:100%;background:var(--gold);
+  animation:loaderBar 1.4s ease-in-out infinite;
+}
+@keyframes loaderBar{0%{left:-100%}100%{left:100%}}
+
+/* ── CURSOR ── */
+.cur{
+  width:10px;height:10px;
+  background:var(--gold);border-radius:50%;
+  position:fixed;pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:width 0.3s,height 0.3s,background 0.3s;
+}
+.cur-ring{
+  width:36px;height:36px;
+  border:1px solid rgba(200,146,74,0.6);
+  border-radius:50%;
+  position:fixed;pointer-events:none;z-index:9997;
+  transform:translate(-50%,-50%);
+  transition:all 0.08s linear;
+}
+body:has(a:hover) .cur,
+body:has(button:hover) .cur{
+  width:6px;height:6px;background:transparent;
+  border:1px solid var(--gold);
+}
+body:has(a:hover) .cur-ring,
+body:has(button:hover) .cur-ring{
+  width:50px;height:50px;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:2rem 5vw;
+  transition:all 0.5s ease;
+}
+nav.sticky{
+  padding:1.1rem 5vw;
+  background:rgba(6,5,4,0.88);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:var(--bd);
+  font-size:1.25rem;letter-spacing:0.12em;
+  color:var(--cream);
+}
+.nav-logo span{color:var(--gold)}
+.nav-links{
+  display:flex;align-items:center;gap:3rem;list-style:none;
+}
+.nav-links a{
+  font-size:0.72rem;font-weight:400;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);transition:color 0.3s;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-book{
+  padding:0.65rem 1.6rem;
+  border:1px solid var(--gold);
+  font-size:0.68rem;letter-spacing:0.18em;
+  text-transform:uppercase;color:var(--gold)!important;
+  transition:all 0.3s!important;
+}
+.nav-book:hover{background:var(--gold);color:var(--black)!important}
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;cursor:none;
+}
+.hamburger span{display:block;width:22px;height:1px;background:var(--cream);transition:0.3s}
+.mob-menu{
+  display:none;position:fixed;inset:0;z-index:490;
+  background:var(--black);flex-direction:column;
+  align-items:center;justify-content:center;gap:2.5rem;
+}
+.mob-menu.open{display:flex}
+.mob-menu a{
+  font-family:var(--bd);font-size:2.5rem;font-weight:300;
+  font-style:italic;color:var(--cream);
+  transition:color 0.3s;
+}
+.mob-menu a:hover{color:var(--gold)}
+
+/* ── HERO ── */
+.hero{
+  min-height:100svh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+  overflow:hidden;
+}
+.hero-left{
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:0 5vw 8vh;
+  position:relative;z-index:2;
+}
+.hero-eyebrow{
+  font-size:0.65rem;letter-spacing:0.4em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:2.5rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.hero-eyebrow::before{
+  content:'';display:block;width:40px;height:1px;background:var(--gold);
+}
+.hero-headline{
+  font-family:var(--bd);
+  font-size:clamp(4rem,7.5vw,8rem);
+  font-weight:300;line-height:0.9;
+  margin-bottom:3rem;
+}
+.hero-headline .l1{display:block;color:var(--cream)}
+.hero-headline .l2{
+  display:block;font-style:italic;
+  color:var(--gold);margin-left:1.5rem;
+}
+.hero-headline .l3{display:block;color:var(--cream)}
+.hero-sub{
+  font-size:0.9rem;line-height:1.9;
+  color:var(--muted);max-width:400px;
+  margin-bottom:3rem;
+}
+.hero-btns{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+.btn-gold{
+  display:inline-block;
+  background:var(--gold);color:var(--black);
+  padding:1rem 2.2rem;
+  font-size:0.72rem;font-weight:500;letter-spacing:0.18em;
+  text-transform:uppercase;
+  transition:all 0.35s ease;
+  cursor:none;
+  position:relative;overflow:hidden;
+}
+.btn-gold::before{
+  content:'';position:absolute;inset:0;
+  background:var(--gold2);
+  transform:translateX(-101%);transition:transform 0.35s ease;
+}
+.btn-gold:hover::before{transform:translateX(0)}
+.btn-gold span{position:relative;z-index:1}
+.btn-line{
+  display:inline-flex;align-items:center;gap:0.7rem;
+  font-size:0.78rem;color:var(--muted);letter-spacing:0.08em;
+  transition:color 0.3s;cursor:none;
+}
+.btn-line::after{
+  content:'→';transition:transform 0.3s;
+}
+.btn-line:hover{color:var(--cream)}
+.btn-line:hover::after{transform:translateX(4px)}
+
+.hero-right{
+  position:relative;overflow:hidden;
+}
+.hero-img-block{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(120deg, #1a1009 0%, #0e0a06 40%, #060504 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-img-block::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 70% at 40% 50%,rgba(200,146,74,0.12) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 60% at 70% 30%,rgba(212,168,152,0.08) 0%,transparent 60%);
+}
+.hero-art{
+  position:relative;z-index:1;
+  text-align:center;
+}
+.hero-art-ring{
+  width:300px;height:300px;
+  border-radius:50%;
+  border:1px solid var(--border);
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  animation:rotateRing 20s linear infinite;
+}
+@keyframes rotateRing{to{transform:rotate(360deg)}}
+.hero-art-ring::before{
+  content:'✦ YesiMakeup ✦ Chicago ✦ Beauty ✦ Art ✦ ';
+  position:absolute;
+  font-size:0.55rem;letter-spacing:0.3em;
+  color:rgba(200,146,74,0.5);
+  width:100%;text-align:center;
+  top:-0.8rem;
+}
+.hero-art-inner{
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,rgba(200,146,74,0.15),rgba(212,168,152,0.06),transparent);
+  border:1px solid rgba(200,146,74,0.15);
+  display:flex;align-items:center;justify-content:center;
+  animation:rotateRing 20s linear infinite reverse;
+  flex-direction:column;gap:0.3rem;
+}
+.hero-art-inner-text{
+  font-family:var(--bd);font-size:2.5rem;
+  font-style:italic;color:var(--gold);font-weight:300;
+}
+.hero-art-inner-sub{
+  font-size:0.6rem;letter-spacing:0.25em;color:var(--muted);
+  text-transform:uppercase;
+}
+.hero-scroll{
+  position:absolute;bottom:3rem;right:5vw;
+  display:flex;flex-direction:column;align-items:center;gap:1rem;
+  z-index:2;
+}
+.hero-scroll-text{
+  font-size:0.6rem;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--muted);
+  writing-mode:vertical-rl;
+}
+.hero-scroll-line{
+  width:1px;height:60px;
+  background:linear-gradient(to bottom,var(--gold),transparent);
+  animation:scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine{0%,100%{opacity:0.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.1)}}
+
+/* ── TICKER ── */
+.ticker{
+  background:var(--gold);
+  padding:0.8rem 0;overflow:hidden;
+  border-top:none;
+}
+.ticker-track{
+  display:inline-flex;gap:0;white-space:nowrap;
+  animation:ticker 30s linear infinite;
+}
+.ticker-track span{
+  font-family:var(--bd);font-style:italic;
+  font-size:0.85rem;color:var(--black);
+  padding:0 1.8rem;letter-spacing:0.05em;
+}
+.ticker-track .sep{
+  font-style:normal;font-size:0.5rem;
+  opacity:0.5;padding:0 0.5rem;
+}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── STATS STRIP ── */
+.stats{
+  padding:5rem 5vw;
+  background:var(--deep);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.stat-item{
+  padding:3rem 2rem;
+  text-align:center;
+  position:relative;
+}
+.stat-item::after{
+  content:'';position:absolute;right:0;top:20%;
+  height:60%;width:1px;
+  background:var(--border);
+}
+.stat-item:last-child::after{display:none}
+.stat-n{
+  font-family:var(--bd);
+  font-size:clamp(2.5rem,4vw,4rem);
+  font-weight:300;color:var(--gold);
+  line-height:1;margin-bottom:0.5rem;
+}
+.stat-label{
+  font-size:0.68rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--muted);
+}
+
+/* ── ABOUT ── */
+.about{
+  padding:10rem 5vw;
+  display:grid;
+  grid-template-columns:0.9fr 1.1fr;
+  gap:8vw;align-items:center;
+  background:var(--black);
+  position:relative;overflow:hidden;
+}
+.about::before{
+  content:'BEAUTY';
+  position:absolute;
+  right:-5vw;top:50%;transform:translateY(-50%);
+  font-family:var(--bd);font-style:italic;
+  font-size:clamp(6rem,14vw,18rem);
+  font-weight:700;
+  color:rgba(200,146,74,0.03);
+  line-height:1;pointer-events:none;white-space:nowrap;
+}
+.about-visual{
+  position:relative;
+}
+.about-frame{
+  aspect-ratio:3/4;
+  background:linear-gradient(155deg,#1c1208 0%,#0e0904 100%);
+  border:1px solid var(--border);
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.about-frame::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 80% at 30% 30%,rgba(200,146,74,0.1),transparent 60%),
+             radial-gradient(ellipse 60% 60% at 70% 70%,rgba(212,168,152,0.07),transparent);
+}
+.about-placeholder{
+  position:relative;z-index:1;text-align:center;
+}
+.about-placeholder-icon{
+  font-family:var(--bd);font-style:italic;
+  font-size:4rem;color:rgba(200,146,74,0.2);
+  display:block;margin-bottom:1rem;
+}
+.about-placeholder-label{
+  font-size:0.65rem;letter-spacing:0.35em;
+  text-transform:uppercase;color:var(--muted);
+}
+.about-deco-line{
+  position:absolute;
+  bottom:-2rem;right:-2rem;
+  width:65%;height:65%;
+  border:1px solid var(--border);
+  pointer-events:none;
+}
+.about-badge{
+  position:absolute;
+  top:-2rem;left:-2rem;
+  width:90px;height:90px;
+  background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;
+}
+.about-badge-n{
+  font-family:var(--bd);font-size:1.8rem;
+  font-weight:300;color:var(--black);line-height:1;
+}
+.about-badge-t{
+  font-size:0.45rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--black);
+  font-weight:500;
+}
+.about-content .tag{
+  font-size:0.65rem;letter-spacing:0.35em;
+  text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:1.5rem;
+}
+.about-content .tag::before{
+  content:'';display:block;
+  width:30px;height:1px;background:var(--gold);
+}
+.about-title{
+  font-family:var(--bd);
+  font-size:clamp(2.2rem,4vw,3.5rem);
+  font-weight:300;line-height:1.1;
+  color:var(--cream);margin-bottom:2rem;
+}
+.about-title em{font-style:italic;color:var(--gold)}
+.about-body{
+  color:var(--muted);font-size:0.92rem;line-height:1.95;
+  margin-bottom:2rem;
+}
+.about-chips{
+  display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.5rem;
+}
+.chip{
+  padding:0.4rem 1rem;
+  border:1px solid var(--border);
+  font-size:0.65rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--muted);
+  transition:all 0.3s;
+}
+.chip:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── SERVICES ── */
+.services{
+  padding:8rem 5vw;
+  background:var(--deep);
+}
+.sec-head{
+  display:flex;align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:5rem;
+  gap:2rem;flex-wrap:wrap;
+}
+.sec-label{
+  font-size:0.65rem;letter-spacing:0.35em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:1rem;
+}
+.sec-title{
+  font-family:var(--bd);
+  font-size:clamp(2.5rem,5vw,4.5rem);
+  font-weight:300;line-height:1.05;color:var(--cream);
+}
+.sec-title em{font-style:italic;color:var(--gold)}
+.services-list{
+  display:flex;flex-direction:column;gap:0;
+  border-top:1px solid var(--border);
+}
+.svc-item{
+  display:grid;
+  grid-template-columns:80px 1fr auto auto;
+  gap:0 3rem;align-items:center;
+  padding:2.2rem 0;
+  border-bottom:1px solid var(--border);
+  cursor:none;
+  position:relative;overflow:hidden;
+  transition:padding-left 0.4s ease;
+}
+.svc-item::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;
+  width:0;background:var(--border);
+  transition:width 0.4s ease;
+}
+.svc-item:hover{padding-left:1.5rem}
+.svc-item:hover::before{width:3px;background:var(--gold)}
+.svc-num{
+  font-family:var(--bd);font-style:italic;
+  font-size:1.5rem;color:var(--border);
+  transition:color 0.4s;font-weight:300;
+}
+.svc-item:hover .svc-num{color:var(--gold)}
+.svc-info h3{
+  font-family:var(--bd);font-size:1.5rem;
+  font-weight:300;color:var(--cream);
+  margin-bottom:0.3rem;
+  transition:color 0.3s;
+}
+.svc-item:hover .svc-info h3{color:var(--gold)}
+.svc-info p{
+  font-size:0.8rem;color:var(--muted);line-height:1.7;
+  max-width:500px;
+}
+.svc-price{
+  font-family:var(--bd);
+  font-size:1.1rem;font-weight:300;
+  color:var(--muted);white-space:nowrap;
+  transition:color 0.3s;
+}
+.svc-item:hover .svc-price{color:var(--cream)}
+.svc-arrow{
+  width:44px;height:44px;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:0.9rem;
+  transition:all 0.3s;
+}
+.svc-item:hover .svc-arrow{
+  background:var(--gold);
+  border-color:var(--gold);color:var(--black);
+}
+
+/* ── PORTFOLIO ── */
+.portfolio{
+  padding:8rem 0 8rem 5vw;
+  background:var(--black);
+  overflow:hidden;
+}
+.portfolio-head{
+  padding-right:5vw;
+  margin-bottom:4rem;
+}
+.portfolio-scroll{
+  display:flex;gap:1.5rem;
+  overflow-x:auto;padding-right:5vw;
+  padding-bottom:1rem;
+  scrollbar-width:none;cursor:grab;
+}
+.portfolio-scroll::-webkit-scrollbar{display:none}
+.portfolio-scroll:active{cursor:grabbing}
+.p-item{
+  flex:0 0 auto;
+  position:relative;overflow:hidden;
+}
+.p-item:nth-child(1){width:320px;height:440px}
+.p-item:nth-child(2){width:240px;height:320px;margin-top:80px}
+.p-item:nth-child(3){width:300px;height:420px}
+.p-item:nth-child(4){width:260px;height:360px;margin-top:40px}
+.p-item:nth-child(5){width:280px;height:400px}
+.p-item:nth-child(6){width:220px;height:300px;margin-top:100px}
+.p-bg{
+  width:100%;height:100%;
+  transition:transform 0.7s ease;
+}
+.p-item:hover .p-bg{transform:scale(1.06)}
+.p-bg-1{background:linear-gradient(145deg,#2a1810 0%,#160d07 60%,#0a0604 100%)}
+.p-bg-2{background:linear-gradient(160deg,#221611 0%,#180f09 100%)}
+.p-bg-3{background:linear-gradient(130deg,#1e1409 0%,#120c06 60%,#0d0806 100%)}
+.p-bg-4{background:linear-gradient(150deg,#261a0c 0%,#160e06 100%)}
+.p-bg-5{background:linear-gradient(140deg,#1a1209 0%,#0f0906 100%)}
+.p-bg-6{background:linear-gradient(135deg,#231508 0%,#13090504 100%)}
+.p-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(6,5,4,0.85) 0%,transparent 50%);
+  opacity:0;transition:opacity 0.4s;
+  display:flex;align-items:flex-end;padding:1.5rem;
+}
+.p-item:hover .p-overlay{opacity:1}
+.p-label{
+  font-family:var(--bd);font-style:italic;
+  font-size:1rem;color:var(--cream);
+}
+.p-deco{
+  position:absolute;top:1rem;right:1rem;
+  font-size:0.6rem;letter-spacing:0.3em;
+  color:rgba(200,146,74,0.25);
+  text-transform:uppercase;
+}
+
+/* ── PROCESS ── */
+.process{
+  padding:8rem 5vw;
+  background:var(--deep);
+}
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  margin-top:5rem;
+}
+.proc-item{
+  background:var(--deep);
+  padding:3rem 2rem;
+  position:relative;
+  transition:background 0.4s;
+}
+.proc-item:hover{background:var(--card)}
+.proc-n{
+  font-family:var(--bd);font-style:italic;
+  font-size:4rem;font-weight:300;
+  color:rgba(200,146,74,0.12);
+  line-height:1;margin-bottom:1.5rem;
+  transition:color 0.4s;
+}
+.proc-item:hover .proc-n{color:rgba(200,146,74,0.25)}
+.proc-icon{
+  font-size:1.5rem;margin-bottom:1rem;
+}
+.proc-title{
+  font-family:var(--bd);font-size:1.2rem;
+  font-weight:300;color:var(--cream);
+  margin-bottom:0.8rem;
+}
+.proc-desc{
+  font-size:0.8rem;color:var(--muted);line-height:1.8;
+}
+.proc-num-label{
+  position:absolute;top:1.5rem;right:1.5rem;
+  font-size:0.6rem;letter-spacing:0.25em;
+  color:var(--border);text-transform:uppercase;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials{
+  padding:8rem 5vw;
+  background:var(--black);
+  position:relative;overflow:hidden;
+}
+.testimonials::after{
+  content:'"';
+  position:absolute;right:-2vw;bottom:-5rem;
+  font-family:var(--bd);font-style:italic;
+  font-size:clamp(12rem,22vw,30rem);
+  color:rgba(200,146,74,0.03);
+  line-height:1;pointer-events:none;
+}
+.testi-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);
+  margin-top:5rem;
+  position:relative;z-index:1;
+}
+.testi-card{
+  background:var(--black);
+  padding:2.5rem;
+  transition:background 0.4s;
+}
+.testi-card:hover{background:var(--card)}
+.testi-stars{
+  color:var(--gold);font-size:0.75rem;
+  letter-spacing:0.2em;margin-bottom:1.5rem;
+}
+.testi-q{
+  font-family:var(--bd);font-style:italic;
+  font-size:1.05rem;font-weight:300;
+  color:var(--cream);line-height:1.75;
+  margin-bottom:2rem;
+}
+.testi-author{
+  display:flex;align-items:center;gap:1rem;
+}
+.testi-av{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(200,146,74,0.1);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--bd);font-size:0.9rem;color:var(--gold);
+}
+.testi-name{
+  font-size:0.82rem;font-weight:500;color:var(--cream);
+}
+.testi-role{font-size:0.72rem;color:var(--muted)}
+
+/* ── BOOKING ── */
+.booking{
+  padding:8rem 5vw;
+  background:var(--deep);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8vw;align-items:start;
+}
+.booking-left .tag{
+  font-size:0.65rem;letter-spacing:0.35em;
+  text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:1.5rem;
+}
+.booking-left .tag::before{
+  content:'';display:block;width:30px;height:1px;background:var(--gold);
+}
+.booking-title{
+  font-family:var(--bd);
+  font-size:clamp(2.5rem,4.5vw,4rem);
+  font-weight:300;line-height:1.05;
+  color:var(--cream);margin-bottom:1.5rem;
+}
+.booking-title em{font-style:italic;color:var(--gold)}
+.booking-desc{
+  font-size:0.9rem;color:var(--muted);
+  line-height:1.9;margin-bottom:3rem;
+}
+.booking-details{
+  display:flex;flex-direction:column;gap:1.5rem;
+}
+.bdetail{
+  display:flex;gap:1.2rem;align-items:flex-start;
+}
+.bdetail-icon{
+  width:42px;height:42px;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;flex-shrink:0;
+}
+.bdetail-title{
+  font-size:0.72rem;font-weight:500;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--cream);
+  margin-bottom:0.2rem;
+}
+.bdetail-val{font-size:0.85rem;color:var(--muted)}
+
+/* Form */
+.form-box{
+  background:rgba(255,255,255,0.015);
+  border:1px solid var(--border);
+  padding:3rem;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.fg{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem}
+.fg label{
+  font-size:0.65rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--muted);
+}
+.fg input,
+.fg select,
+.fg textarea{
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(200,146,74,0.15);
+  padding:0.85rem 1rem;
+  color:var(--cream);
+  font-family:var(--out);font-size:0.88rem;font-weight:300;
+  outline:none;transition:border-color 0.3s;cursor:none;
+  -webkit-appearance:none;
+}
+.fg input:focus,
+.fg select:focus,
+.fg textarea:focus{border-color:var(--gold)}
+.fg input::placeholder,
+.fg textarea::placeholder{color:rgba(122,106,94,0.5)}
+.fg select option{background:var(--deep)}
+.fg input[type=date]::-webkit-calendar-picker-indicator,
+.fg input[type=time]::-webkit-calendar-picker-indicator{filter:invert(0.4);cursor:pointer}
+.fg textarea{resize:vertical}
+.form-submit{
+  width:100%;padding:1.1rem;
+  background:var(--gold);color:var(--black);
+  border:none;
+  font-family:var(--out);font-size:0.75rem;font-weight:500;
+  letter-spacing:0.2em;text-transform:uppercase;
+  cursor:none;transition:background 0.3s;
+  position:relative;overflow:hidden;
+}
+.form-submit:hover{background:var(--gold2)}
+.form-note{
+  text-align:center;font-size:0.72rem;
+  color:var(--muted);margin-top:1rem;
+}
+.form-success{
+  display:none;text-align:center;padding:4rem 2rem;
+}
+.form-success.show{display:block}
+.success-glyph{
+  font-family:var(--bd);font-style:italic;
+  font-size:4rem;color:var(--gold);
+  margin-bottom:1rem;
+}
+.form-success h3{
+  font-family:var(--bd);font-size:2rem;
+  font-weight:300;color:var(--cream);margin-bottom:1rem;
+}
+.form-success p{font-size:0.88rem;color:var(--muted)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--black);
+  border-top:1px solid var(--border);
+  padding:5rem 5vw 2rem;
+}
+.footer-top{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:4rem;margin-bottom:4rem;
+}
+.footer-brand-logo{
+  font-family:var(--bd);font-size:1.6rem;
+  font-weight:300;color:var(--cream);
+  margin-bottom:1rem;
+}
+.footer-brand-logo span{color:var(--gold)}
+.footer-brand-desc{
+  font-size:0.82rem;color:var(--muted);
+  line-height:1.8;margin-bottom:2rem;
+  max-width:260px;
+}
+.socials{display:flex;gap:0.8rem}
+.soc{
+  width:38px;height:38px;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);transition:all 0.3s;cursor:none;
+}
+.soc svg{width:15px;height:15px}
+.soc:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col h5{
+  font-size:0.62rem;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.5rem;
+}
+.footer-col ul{list-style:none}
+.footer-col ul li a,
+.footer-col ul li{
+  font-size:0.82rem;color:var(--muted);
+  line-height:2.2;transition:color 0.3s;cursor:none;
+}
+.footer-col ul li a:hover{color:var(--cream)}
+.footer-bottom{
+  border-top:1px solid var(--border);
+  padding-top:2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-bottom span{font-size:0.72rem;color:var(--muted)}
+.footer-bottom .heart{color:var(--gold)}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal{
+  opacity:0;transform:translateY(40px);
+  transition:opacity 0.9s ease,transform 0.9s ease;
+}
+.reveal.from-left{transform:translateX(-50px)}
+.reveal.from-right{transform:translateX(50px)}
+.reveal.visible{opacity:1;transform:translate(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:12vh 5vw 8vh;justify-content:center}
+  .about{grid-template-columns:1fr;gap:4rem}
+  .booking{grid-template-columns:1fr;gap:4rem}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .testi-grid .testi-card:nth-child(3){display:none}
+  .process-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  nav{padding:1.2rem 5vw}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-headline{font-size:clamp(3rem,12vw,5rem)}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat-item::after{display:none}
+  .about{padding:6rem 5vw}
+  .about-badge{width:70px;height:70px}
+  .about-badge-n{font-size:1.4rem}
+  .services{padding:5rem 5vw}
+  .svc-item{
+    grid-template-columns:60px 1fr;
+    grid-template-rows:auto auto;
+    gap:0.5rem;
+  }
+  .svc-price{display:none}
+  .svc-arrow{display:none}
+  .svc-info{grid-column:2}
+  .portfolio{padding:5rem 0 5rem 5vw}
+  .process-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .testi-grid .testi-card:nth-child(3){display:block}
+  .booking{padding:5rem 5vw}
+  .form-box{padding:2rem 1.5rem}
+  .form-row{grid-template-columns:1fr}
+  footer{padding:4rem 5vw 2rem}
+  .footer-top{grid-template-columns:1fr;gap:2.5rem}
+  .footer-bottom{flex-direction:column;text-align:center}
+  body{cursor:auto}
+  .cur,.cur-ring{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">YesiMakeup</div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- CURSOR -->
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">Yesi<span>Makeup</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#booking" class="nav-book">Book Now</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#about" class="mob-link">About</a>
+  <a href="#services" class="mob-link">Services</a>
+  <a href="#portfolio" class="mob-link">Portfolio</a>
+  <a href="#testimonials" class="mob-link">Reviews</a>
+  <a href="#booking" class="mob-link">Book Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow reveal">Chicago's Premier Makeup Artist</div>
+    <h1 class="hero-headline reveal">
+      <span class="l1">Where</span>
+      <span class="l2">Beauty</span>
+      <span class="l3">Begins.</span>
+    </h1>
+    <p class="hero-sub reveal">Luxury makeup artistry crafted for your most important moments — bridal, editorial, glam, and everything in between.</p>
+    <div class="hero-btns reveal">
+      <a href="#booking" class="btn-gold"><span>Book Your Session</span></a>
+      <a href="#portfolio" class="btn-line">View Portfolio</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-block">
+      <div class="hero-art">
+        <div class="hero-art-ring">
+          <div class="hero-art-inner">
+            <span class="hero-art-inner-text">Yesi</span>
+            <span class="hero-art-inner-sub">Est. 2016</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-text">Scroll</div>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Bridal</span><span class="sep">✦</span>
+    <span>Full Glam</span><span class="sep">✦</span>
+    <span>Editorial</span><span class="sep">✦</span>
+    <span>Natural Looks</span><span class="sep">✦</span>
+    <span>Prom & Quinceañera</span><span class="sep">✦</span>
+    <span>Film & TV</span><span class="sep">✦</span>
+    <span>Airbrush</span><span class="sep">✦</span>
+    <span>On Location</span><span class="sep">✦</span>
+    <span>Bridal</span><span class="sep">✦</span>
+    <span>Full Glam</span><span class="sep">✦</span>
+    <span>Editorial</span><span class="sep">✦</span>
+    <span>Natural Looks</span><span class="sep">✦</span>
+    <span>Prom & Quinceañera</span><span class="sep">✦</span>
+    <span>Film & TV</span><span class="sep">✦</span>
+    <span>Airbrush</span><span class="sep">✦</span>
+    <span>On Location</span><span class="sep">✦</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stat-item reveal">
+    <div class="stat-n" data-target="500">0</div>
+    <div class="stat-label">Happy Clients</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-n" data-target="8">0</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-n" data-target="300">0</div>
+    <div class="stat-label">Bridal Looks</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-n" data-target="100">0</div>
+    <div class="stat-label">5-Star Reviews</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual reveal from-left">
+    <div class="about-frame">
+      <div class="about-placeholder">
+        <span class="about-placeholder-icon">✦</span>
+        <span class="about-placeholder-label">Your photo here</span>
+      </div>
+      <div class="about-deco-line"></div>
+    </div>
+    <div class="about-badge">
+      <div class="about-badge-n">8+</div>
+      <div class="about-badge-t">Years</div>
+    </div>
+  </div>
+  <div class="about-content reveal from-right">
+    <div class="tag">About Yesi</div>
+    <h2 class="about-title">
+      Artistry Rooted in<br/><em>Passion & Precision</em>
+    </h2>
+    <p class="about-body">
+      I'm Yesi — a Chicago-based makeup artist who believes beauty is one of the most personal forms of self-expression. Every face I touch is treated as a canvas, every brushstroke intentional. My work is a collaboration between technique and feeling, between what looks stunning on camera and what makes you feel undeniably yourself.
+    </p>
+    <p class="about-body">
+      With 8+ years of professional experience across bridal, editorial, film, and high-profile events, I bring both technical mastery and genuine artistry to every appointment. I work with all skin tones, all skin types, and all visions.
+    </p>
+    <div class="about-chips">
+      <span class="chip">Licensed & Certified</span>
+      <span class="chip">Luxury Products</span>
+      <span class="chip">On-Location Available</span>
+      <span class="chip">All Skin Tones</span>
+      <span class="chip">Chicago & Suburbs</span>
+    </div>
+    <a href="#booking" class="btn-gold"><span>Work With Me</span></a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Services</div>
+      <h2 class="sec-title">What I<br/><em>Offer</em></h2>
+    </div>
+    <a href="#booking" class="btn-line">Book a service</a>
+  </div>
+  <div class="services-list">
+    <div class="svc-item reveal">
+      <div class="svc-num">01</div>
+      <div class="svc-info">
+        <h3>Bridal Makeup</h3>
+        <p>From your trial run to walking down the aisle — flawless, long-lasting, and completely you. Includes consultation.</p>
+      </div>
+      <div class="svc-price">From $250</div>
+      <div class="svc-arrow">→</div>
+    </div>
+    <div class="svc-item reveal">
+      <div class="svc-num">02</div>
+      <div class="svc-info">
+        <h3>Full Glam</h3>
+        <p>Red carpet energy for galas, parties, and every occasion where you need to walk in and command the room.</p>
+      </div>
+      <div class="svc-price">From $150</div>
+      <div class="svc-arrow">→</div>
+    </div>
+    <div class="svc-item reveal">
+      <div class="svc-num">03</div>
+      <div class="svc-info">
+        <h3>Editorial & Photoshoots</h3>
+        <p>Camera-ready artistry that translates beautifully under studio lights. Perfect for brands, campaigns, and portraits.</p>
+      </div>
+      <div class="svc-price">From $180</div>
+      <div class="svc-arrow">→</div>
+    </div>
+    <div class="svc-item reveal">
+      <div class="svc-num">04</div>
+      <div class="svc-info">
+        <h3>Natural & Everyday</h3>
+        <p>Effortless looks that enhance your natural beauty. Perfect for dates, brunches, or whenever you want to glow.</p>
+      </div>
+      <div class="svc-price">From $100</div>
+      <div class="svc-arrow">→</div>
+    </div>
+    <div class="svc-item reveal">
+      <div class="svc-num">05</div>
+      <div class="svc-info">
+        <h3>Prom & Quinceañera</h3>
+        <p>Make your milestone unforgettable. A signature look tailored to your dress, personality, and the night ahead.</p>
+      </div>
+      <div class="svc-price">From $120</div>
+      <div class="svc-arrow">→</div>
+    </div>
+    <div class="svc-item reveal">
+      <div class="svc-num">06</div>
+      <div class="svc-info">
+        <h3>Film & TV</h3>
+        <p>High-definition artistry designed to perform under studio lighting. Continuity-focused for productions of all sizes.</p>
+      </div>
+      <div class="svc-price">From $200</div>
+      <div class="svc-arrow">→</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-head reveal">
+    <div class="sec-label">Portfolio</div>
+    <h2 class="sec-title">Every Face<br/><em>A Canvas</em></h2>
+  </div>
+  <div class="portfolio-scroll" id="portfolioScroll">
+    <div class="p-item">
+      <div class="p-bg p-bg-1"></div>
+      <div class="p-overlay"><span class="p-label">Bridal Elegance</span></div>
+      <div class="p-deco">Look 01</div>
+    </div>
+    <div class="p-item">
+      <div class="p-bg p-bg-2"></div>
+      <div class="p-overlay"><span class="p-label">Golden Hour</span></div>
+      <div class="p-deco">Look 02</div>
+    </div>
+    <div class="p-item">
+      <div class="p-bg p-bg-3"></div>
+      <div class="p-overlay"><span class="p-label">Dark Editorial</span></div>
+      <div class="p-deco">Look 03</div>
+    </div>
+    <div class="p-item">
+      <div class="p-bg p-bg-4"></div>
+      <div class="p-overlay"><span class="p-label">Soft Glam</span></div>
+      <div class="p-deco">Look 04</div>
+    </div>
+    <div class="p-item">
+      <div class="p-bg p-bg-5"></div>
+      <div class="p-overlay"><span class="p-label">Quince Fantasy</span></div>
+      <div class="p-deco">Look 05</div>
+    </div>
+    <div class="p-item">
+      <div class="p-bg p-bg-6"></div>
+      <div class="p-overlay"><span class="p-label">Natural Glow</span></div>
+      <div class="p-deco">Look 06</div>
+    </div>
+  </div>
+  <div style="padding-top:2.5rem;padding-right:5vw">
+    <p style="font-size:0.8rem;color:var(--muted)">
+      Follow <a href="#" style="color:var(--gold)">@YesiMakeup</a> on Instagram for the full portfolio ✦
+    </p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">How It Works</div>
+      <h2 class="sec-title">The<br/><em>Experience</em></h2>
+    </div>
+  </div>
+  <div class="process-grid">
+    <div class="proc-item reveal">
+      <div class="proc-num-label">Step 01</div>
+      <div class="proc-n">01</div>
+      <div class="proc-icon">💬</div>
+      <div class="proc-title">Inquiry & Consult</div>
+      <p class="proc-desc">Fill out the booking form with your event details, preferred date, and vision. I'll respond within 24 hours to confirm availability and chat through your look.</p>
+    </div>
+    <div class="proc-item reveal">
+      <div class="proc-num-label">Step 02</div>
+      <div class="proc-n">02</div>
+      <div class="proc-icon">📋</div>
+      <div class="proc-title">Trial (Bridal Only)</div>
+      <p class="proc-desc">Bridal clients get a full trial run before the wedding day. We test looks, confirm products that work with your skin, and finalize every detail.</p>
+    </div>
+    <div class="proc-item reveal">
+      <div class="proc-num-label">Step 03</div>
+      <div class="proc-n">03</div>
+      <div class="proc-icon">✦</div>
+      <div class="proc-title">The Appointment</div>
+      <p class="proc-desc">I arrive on time, fully stocked, and completely focused on you. Your appointment is a relaxed, luxurious experience — no rushing, only results.</p>
+    </div>
+    <div class="proc-item reveal">
+      <div class="proc-num-label">Step 04</div>
+      <div class="proc-n">04</div>
+      <div class="proc-icon">📸</div>
+      <div class="proc-title">Walk Out Glowing</div>
+      <p class="proc-desc">Leave feeling like the most beautiful version of yourself — camera-ready, confident, and glowing. Long-lasting looks that hold up all day and night.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Client Love</div>
+      <h2 class="sec-title">They Said<br/><em>It Best</em></h2>
+    </div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-q">"Yesi made me feel like the most beautiful version of myself on my wedding day. Every photo I look at, I cry happy tears. She is truly gifted."</p>
+      <div class="testi-author">
+        <div class="testi-av">S</div>
+        <div>
+          <div class="testi-name">Sofia R.</div>
+          <div class="testi-role">Bride · June 2024</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-q">"I've been going to Yesi for every major event for 3 years. She knows my face better than I do. The results are always completely jaw-dropping."</p>
+      <div class="testi-author">
+        <div class="testi-av">M</div>
+        <div>
+          <div class="testi-name">Marisol T.</div>
+          <div class="testi-role">Repeat Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-q">"My quinceañera makeup was EVERYTHING. She listened to exactly what I wanted and delivered it flawlessly. All my friends were completely obsessed."</p>
+      <div class="testi-author">
+        <div class="testi-av">A</div>
+        <div>
+          <div class="testi-name">Alejandra G.</div>
+          <div class="testi-role">Quinceañera · 2024</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-q">"Professional, punctual, and genuinely talented. The makeup lasted 12+ hours through a full photoshoot with absolutely zero touch-ups needed."</p>
+      <div class="testi-author">
+        <div class="testi-av">J</div>
+        <div>
+          <div class="testi-name">Jamie L.</div>
+          <div class="testi-role">Editorial Shoot</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-q">"I have very sensitive skin and Yesi was so thoughtful about every product. My skin looked incredible and had zero reaction. Absolutely coming back."</p>
+      <div class="testi-author">
+        <div class="testi-av">P</div>
+        <div>
+          <div class="testi-name">Priya K.</div>
+          <div class="testi-role">Special Event</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-q">"Booked Yesi for my prom and I have never felt more confident in my life. She matched my vision perfectly and added her own touch that made it even better."</p>
+      <div class="testi-author">
+        <div class="testi-av">V</div>
+        <div>
+          <div class="testi-name">Valentina M.</div>
+          <div class="testi-role">Prom · 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="booking-left">
+    <div class="tag reveal">Book Your Session</div>
+    <h2 class="booking-title reveal">
+      Let's Create<br/><em>Your Look</em>
+    </h2>
+    <p class="booking-desc reveal">
+      Dates fill up fast — especially for weddings and events. Send your inquiry early and let's bring your vision to life.
+    </p>
+    <div class="booking-details">
+      <div class="bdetail reveal">
+        <div class="bdetail-icon">📍</div>
+        <div>
+          <div class="bdetail-title">Location</div>
+          <div class="bdetail-val">Chicago, IL · On-Location Available</div>
+        </div>
+      </div>
+      <div class="bdetail reveal">
+        <div class="bdetail-icon">📱</div>
+        <div>
+          <div class="bdetail-title">Instagram</div>
+          <div class="bdetail-val">@YesiMakeup</div>
+        </div>
+      </div>
+      <div class="bdetail reveal">
+        <div class="bdetail-icon">⏰</div>
+        <div>
+          <div class="bdetail-title">Hours</div>
+          <div class="bdetail-val">Mon – Sun · By Appointment Only</div>
+        </div>
+      </div>
+      <div class="bdetail reveal">
+        <div class="bdetail-icon">✦</div>
+        <div>
+          <div class="bdetail-title">Response Time</div>
+          <div class="bdetail-val">Within 24 hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="reveal from-right">
+    <div class="form-box" id="formBox">
+      <form id="bookForm" novalidate>
+        <div class="form-row">
+          <div class="fg">
+            <label>First Name</label>
+            <input type="text" placeholder="Sofia" required/>
+          </div>
+          <div class="fg">
+            <label>Last Name</label>
+            <input type="text" placeholder="Rodriguez" required/>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Email Address</label>
+          <input type="email" placeholder="sofia@email.com" required/>
+        </div>
+        <div class="fg">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="(312) 000-0000"/>
+        </div>
+        <div class="fg">
+          <label>Service</label>
+          <select required>
+            <option value="" disabled selected>Select a service</option>
+            <option>Bridal Makeup — From $250</option>
+            <option>Full Glam — From $150</option>
+            <option>Editorial / Photoshoot — From $180</option>
+            <option>Natural & Everyday — From $100</option>
+            <option>Prom & Quinceañera — From $120</option>
+            <option>Film & TV — From $200</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="fg">
+            <label>Event Date</label>
+            <input type="date" required/>
+          </div>
+          <div class="fg">
+            <label>Preferred Time</label>
+            <input type="time"/>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Tell Me Your Vision</label>
+          <textarea rows="4" placeholder="Describe your event, inspiration, skin type, or any questions you have..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Booking Request ✦</button>
+        <p class="form-note">No payment required to inquire · I respond within 24 hours</p>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="success-glyph">✦</div>
+        <h3>Request Received!</h3>
+        <p>Thank you for reaching out. Yesi will respond within 24 hours to confirm your appointment details.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-logo">Yesi<span>Makeup</span></div>
+      <p class="footer-brand-desc">Transforming faces, elevating confidence. Chicago's luxury makeup artistry studio serving all occasions.</p>
+      <div class="socials">
+        <a href="#" class="soc" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="soc" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.77a4.85 4.85 0 0 1-1.01-.08z"/></svg>
+        </a>
+        <a href="#" class="soc" aria-label="Pinterest">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Bridal Makeup</a></li>
+        <li><a href="#services">Full Glam</a></li>
+        <li><a href="#services">Editorial</a></li>
+        <li><a href="#services">Natural Look</a></li>
+        <li><a href="#services">Prom & Quince</a></li>
+        <li><a href="#services">Film & TV</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Navigation</h5>
+      <ul>
+        <li><a href="#about">About Yesi</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#process">The Process</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#booking">Book Now</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li>Chicago, Illinois</li>
+        <li>@YesiMakeup</li>
+        <li>By Appointment Only</li>
+        <li>All Inquiries Via Form</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 YesiMakeup · All rights reserved</span>
+    <span>Designed with <span class="heart">✦</span> in Chicago</span>
+  </div>
+</footer>
+
+<script>
+// ── LOADER
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hide');
+  }, 1400);
+});
+
+// ── CURSOR
+const cur = document.getElementById('cur');
+const ring = document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+});
+(function animRing(){
+  rx+=(mx-rx)*0.1; ry+=(my-ry)*0.1;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+})();
+
+// ── STICKY NAV
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('sticky', window.scrollY>60);
+});
+
+// ── HAMBURGER
+const ham = document.getElementById('ham');
+const mob = document.getElementById('mobMenu');
+ham.addEventListener('click',()=>{
+  mob.classList.toggle('open');
+  const s=ham.querySelectorAll('span');
+  const open=mob.classList.contains('open');
+  s[0].style.transform=open?'translateY(6px) rotate(45deg)':'';
+  s[1].style.opacity=open?'0':'';
+  s[2].style.transform=open?'translateY(-6px) rotate(-45deg)':'';
+});
+document.querySelectorAll('.mob-link').forEach(l=>{
+  l.addEventListener('click',()=>{
+    mob.classList.remove('open');
+    ham.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});
+  });
+});
+
+// ── SCROLL REVEALS
+const revEls = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const d=parseInt(e.target.dataset.delay||0);
+      setTimeout(()=>e.target.classList.add('visible'),d);
+      revObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+revEls.forEach(el=>revObs.observe(el));
+
+// ── COUNTER ANIMATION
+function animCount(el, target, suffix=''){
+  let start=0;
+  const dur=2000, step=16;
+  const inc=target/(dur/step);
+  const t=setInterval(()=>{
+    start+=inc;
+    if(start>=target){start=target;clearInterval(t);}
+    el.textContent=Math.round(start)+(suffix||'');
+  },step);
+}
+const statObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const n=e.target.querySelector('[data-target]');
+      if(n){
+        const v=parseInt(n.dataset.target);
+        const s=v>=100?'+':'+';
+        animCount(n,v,'+');
+      }
+      statObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.stat-item').forEach(s=>statObs.observe(s));
+
+// ── PORTFOLIO DRAG SCROLL
+const ps=document.getElementById('portfolioScroll');
+let isDown=false,startX,scrollLeft;
+ps.addEventListener('mousedown',e=>{isDown=true;ps.style.cursor='grabbing';startX=e.pageX-ps.offsetLeft;scrollLeft=ps.scrollLeft;});
+ps.addEventListener('mouseleave',()=>{isDown=false;ps.style.cursor='grab';});
+ps.addEventListener('mouseup',()=>{isDown=false;ps.style.cursor='grab';});
+ps.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-ps.offsetLeft;const walk=(x-startX)*1.8;ps.scrollLeft=scrollLeft-walk;});
+
+// ── BOOKING FORM
+document.getElementById('bookForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const reqs=[...e.target.querySelectorAll('[required]')];
+  let ok=true;
+  reqs.forEach(f=>{
+    if(!f.value.trim()){
+      f.style.borderColor='#c94a4a';ok=false;
+      setTimeout(()=>f.style.borderColor='',3000);
+    }
+  });
+  if(!ok)return;
+  const btn=e.target.querySelector('.form-submit');
+  btn.textContent='Sending...';btn.disabled=true;
+  setTimeout(()=>{
+    e.target.style.display='none';
+    document.getElementById('formSuccess').classList.add('show');
+  },1200);
+});
+
+// ── SMOOTH ANCHOR SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-70,behavior:'smooth'});}
+  });
+});
+
+// ── ACTIVE NAV
+const sections=document.querySelectorAll('section[id]');
+const navAs=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
+  navAs.forEach(a=>{
+    a.style.color='';
+    if(a.getAttribute('href')==='#'+cur&&!a.classList.contains('nav-book'))
+      a.style.color='var(--gold)';
+  });
+});
+</script>
+</body>
+</html>
