@@ -135,7 +135,7 @@ nav{
 nav.sticky{
   padding:1.1rem 5vw;
   background:rgba(6,5,4,0.88);
-  backdrop-filter:blur(24px);
+  backdrop-
   border-bottom:1px solid var(--border);
 }
 .nav-logo{
@@ -404,8 +404,7 @@ nav.sticky{
 .about-frame{
   aspect-ratio:3/4;
   background:#ffffff;
-  border:none;
-  padding:10px;
+  padding:12px;
   position:relative;
   overflow:visible;
   display:flex;
@@ -417,8 +416,11 @@ nav.sticky{
   width:100%;
   height:100%;
   object-fit:cover;
+  image-rendering:auto;
+  background:none;
+  box-shadow:none;
 }
-.about-frame::before{display:none;}
+.about-frame::before{content:none !important;}
 .about-placeholder{
   position:relative;z-index:1;text-align:center;
 }
@@ -826,7 +828,7 @@ nav.sticky{
 .fg textarea::placeholder{color:rgba(122,106,94,0.5)}
 .fg select option{background:var(--deep)}
 .fg input[type=date]::-webkit-calendar-picker-indicator,
-.fg input[type=time]::-webkit-calendar-picker-indicator{filter:invert(0.4);cursor:pointer}
+.fg input[type=time]::-webkit-calendar-picker-indicator{cursor:pointer}
 .fg textarea{resize:vertical}
 .form-submit{
   width:100%;padding:1.1rem;
@@ -1101,7 +1103,7 @@ footer{
   background:rgba(6,5,4,0.97);
   display:flex;align-items:center;justify-content:center;
   flex-direction:column;
-  backdrop-filter:blur(12px);
+  backdrop-
   transition:opacity 0.6s ease, visibility 0.6s ease;
   pointer-events:none;
 }
