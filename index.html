@@ -135,7 +135,7 @@ nav{
 nav.sticky{
   padding:1.1rem 5vw;
   background:rgba(6,5,4,0.88);
-  backdrop-
+  backdrop-filter: blur(10px);
   border-bottom:1px solid var(--border);
 }
 .nav-logo{
@@ -930,127 +930,7 @@ footer{
 .reveal.visible{opacity:1;transform:translate(0)}
 
 
-/* ── BEFORE & AFTER ── */
-.ba-section{
-  padding:8rem 5vw;
-  background:var(--black);
-  position:relative;overflow:hidden;
-}
-.ba-section::before{
-  content:'GLOW';
-  position:absolute;left:-2vw;top:50%;
-  transform:translateY(-50%);
-  font-family:var(--bd);font-style:italic;
-  font-size:clamp(6rem,14vw,18rem);
-  font-weight:700;
-  color:rgba(232,221,208,0.03);
-  line-height:1;pointer-events:none;
-}
-.ba-header{
-  text-align:center;
-  margin-bottom:4rem;
-  position:relative;z-index:1;
-}
-.ba-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:2rem;
-  max-width:1200px;
-  margin:0 auto;
-  position:relative;z-index:1;
-}
-.ba-card{
-  position:relative;
-}
-.ba-card-label{
-  font-size:0.65rem;letter-spacing:0.3em;
-  text-transform:uppercase;color:var(--muted);
-  margin-bottom:1rem;text-align:center;
-}
-.ba-slider{
-  position:relative;
-  width:100%;
-  aspect-ratio:3/4;
-  overflow:hidden;
-  border:1px solid var(--border);
-  cursor:ew-resize;
-  user-select:none;
-}
-.ba-after{
-  position:absolute;inset:0;
-  background:linear-gradient(145deg,#2a1810,#160d07);
-  display:flex;align-items:center;justify-content:center;
-}
-.ba-before{
-  position:absolute;inset:0;
-  background:linear-gradient(145deg,#1a1f18,#0d1209);
-  display:flex;align-items:center;justify-content:center;
-  clip-path:inset(0 50% 0 0);
-  transition:clip-path 0s;
-}
-.ba-before img,
-.ba-after img{
-  width:100%;height:100%;
-  object-fit:cover;pointer-events:none;
-}
-.ba-placeholder-text{
-  font-family:var(--bd);font-style:italic;
-  font-size:1.2rem;color:rgba(232,221,208,0.2);
-  text-align:center;padding:1rem;
-  pointer-events:none;
-}
-.ba-divider{
-  position:absolute;top:0;bottom:0;
-  width:2px;background:var(--gold);
-  left:50%;transform:translateX(-50%);
-  z-index:10;pointer-events:none;
-  transition:left 0s;
-}
-.ba-handle{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:44px;height:44px;
-  background:var(--gold);
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  z-index:11;pointer-events:none;
-  box-shadow:0 0 20px rgba(232,221,208,0.3);
-}
-.ba-handle-arrows{
-  color:var(--black);font-size:0.75rem;
-  font-weight:600;letter-spacing:-1px;
-}
-.ba-tag{
-  position:absolute;top:1rem;
-  font-size:0.55rem;letter-spacing:0.2em;
-  text-transform:uppercase;padding:0.3rem 0.7rem;
-  z-index:5;pointer-events:none;
-}
-.ba-tag-before{
-  left:1rem;
-  background:rgba(6,5,4,0.7);
-  color:var(--muted);
-  border:1px solid var(--border);
-}
-.ba-tag-after{
-  right:1rem;
-  background:var(--gold);
-  color:var(--black);
-}
-.ba-service{
-  text-align:center;margin-top:1rem;
-  font-family:var(--bd);font-style:italic;
-  font-size:1rem;color:var(--cream);
-}
-@media(max-width:900px){
-  .ba-grid{grid-template-columns:1fr 1fr;}
-  .ba-grid .ba-card:nth-child(3){display:none;}
-}
-@media(max-width:600px){
-  .ba-grid{grid-template-columns:1fr;}
-  .ba-grid .ba-card:nth-child(3){display:none;}
-  .ba-section{padding:5rem 5vw;}
-}
+
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){
   .hero{grid-template-columns:1fr}
@@ -1103,7 +983,7 @@ footer{
   background:rgba(6,5,4,0.97);
   display:flex;align-items:center;justify-content:center;
   flex-direction:column;
-  backdrop-
+  backdrop-filter: blur(6px);
   transition:opacity 0.6s ease, visibility 0.6s ease;
   pointer-events:none;
 }
@@ -1434,7 +1314,7 @@ footer{
       <div class="p-corner p-corner-bl"><svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><path d="M2,26 Q2,2 26,2" fill="none" stroke="#c8924a" stroke-width="1.2"/><path d="M2,14 Q8,8 14,2" fill="none" stroke="#c8924a" stroke-width="0.7"/><circle cx="5" cy="5" r="2.5" fill="none" stroke="#c8924a" stroke-width="1.2"/><circle cx="5" cy="5" r="1" fill="#c8924a"/><path d="M10,2 C8,5 5,8 2,10" fill="none" stroke="#c8924a" stroke-width="0.7"/></svg></div>
       <div class="p-corner p-corner-br"><svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><path d="M2,26 Q2,2 26,2" fill="none" stroke="#c8924a" stroke-width="1.2"/><path d="M2,14 Q8,8 14,2" fill="none" stroke="#c8924a" stroke-width="0.7"/><circle cx="5" cy="5" r="2.5" fill="none" stroke="#c8924a" stroke-width="1.2"/><circle cx="5" cy="5" r="1" fill="#c8924a"/><path d="M10,2 C8,5 5,8 2,10" fill="none" stroke="#c8924a" stroke-width="0.7"/></svg></div>
       <div class="p-item">
-      <div class="p-bg p-bg-2"></div>
+      <img src="IMG_5667.jpg" class="p-bg" style="object-fit:cover;width:100%;height:100%;">
       <div class="p-overlay"><span class="p-label">Golden Hour</span></div>
       <div class="p-deco">Look 02</div>
     </div>
@@ -1491,74 +1371,7 @@ footer{
   </div>
 </section>
 
-<!-- BEFORE & AFTER -->
-<section class="ba-section" id="transformations">
-  <div class="ba-header reveal">
-    <div class="sec-label">Transformations</div>
-    <h2 class="sec-title">Before &amp;<br/><em>After</em></h2>
-    <p style="color:var(--muted);font-size:0.9rem;margin-top:1rem;">Drag the slider to reveal the transformation</p>
-  </div>
-  <div class="ba-grid">
 
-    <div class="ba-card reveal">
-      <div class="ba-card-label">Look 01 — Bridal Glam</div>
-      <div class="ba-slider" id="baSlider1">
-        <div class="ba-after">
-          <img src="" alt="After" id="baAfter1" style="display:none"/>
-          <div class="ba-placeholder-text" id="baAfterPh1">After ✦</div>
-        </div>
-        <div class="ba-before" id="baBefore1">
-          <img src="" alt="Before" id="baBeforeImg1" style="display:none"/>
-          <div class="ba-placeholder-text" id="baBeforePh1">Before</div>
-        </div>
-        <div class="ba-divider" id="baDivider1"></div>
-        <div class="ba-handle" id="baHandle1"><div class="ba-handle-arrows">◀▶</div></div>
-        <div class="ba-tag ba-tag-before">Before</div>
-        <div class="ba-tag ba-tag-after">After</div>
-      </div>
-      <div class="ba-service">Bridal Glam</div>
-    </div>
-
-    <div class="ba-card reveal">
-      <div class="ba-card-label">Look 02 — Full Glam</div>
-      <div class="ba-slider" id="baSlider2">
-        <div class="ba-after">
-          <img src="" alt="After" id="baAfter2" style="display:none"/>
-          <div class="ba-placeholder-text" id="baAfterPh2">After ✦</div>
-        </div>
-        <div class="ba-before" id="baBefore2">
-          <img src="" alt="Before" id="baBeforeImg2" style="display:none"/>
-          <div class="ba-placeholder-text" id="baBeforePh2">Before</div>
-        </div>
-        <div class="ba-divider" id="baDivider2"></div>
-        <div class="ba-handle" id="baHandle2"><div class="ba-handle-arrows">◀▶</div></div>
-        <div class="ba-tag ba-tag-before">Before</div>
-        <div class="ba-tag ba-tag-after">After</div>
-      </div>
-      <div class="ba-service">Full Glam</div>
-    </div>
-
-    <div class="ba-card reveal">
-      <div class="ba-card-label">Look 03 — Natural</div>
-      <div class="ba-slider" id="baSlider3">
-        <div class="ba-after">
-          <img src="" alt="After" id="baAfter3" style="display:none"/>
-          <div class="ba-placeholder-text" id="baAfterPh3">After ✦</div>
-        </div>
-        <div class="ba-before" id="baBefore3">
-          <img src="" alt="Before" id="baBeforeImg3" style="display:none"/>
-          <div class="ba-placeholder-text" id="baBeforePh3">Before</div>
-        </div>
-        <div class="ba-divider" id="baDivider3"></div>
-        <div class="ba-handle" id="baHandle3"><div class="ba-handle-arrows">◀▶</div></div>
-        <div class="ba-tag ba-tag-before">Before</div>
-        <div class="ba-tag ba-tag-after">After</div>
-      </div>
-      <div class="ba-service">Natural Look</div>
-    </div>
-
-  </div>
-</section>
 
 <!-- PROCESS -->
 <section class="process" id="process">
@@ -2238,37 +2051,6 @@ document.getElementById('btnEs').addEventListener('click',()=>{
 });
 
 
-// ── BEFORE & AFTER SLIDERS
-function initSlider(sliderId, beforeId, dividerId, handleId){
-  const slider = document.getElementById(sliderId);
-  const before = document.getElementById(beforeId);
-  const divider = document.getElementById(dividerId);
-  const handle = document.getElementById(handleId);
-  if(!slider) return;
-
-  let dragging = false;
-
-  function setPos(x){
-    const rect = slider.getBoundingClientRect();
-    let pct = ((x - rect.left) / rect.width) * 100;
-    pct = Math.min(Math.max(pct, 2), 98);
-    before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-    divider.style.left = pct + '%';
-    handle.style.left = pct + '%';
-  }
-
-  slider.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); });
-  window.addEventListener('mouseup', () => { dragging = false; });
-  window.addEventListener('mousemove', e => { if(dragging) setPos(e.clientX); });
-
-  slider.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, {passive:true});
-  window.addEventListener('touchend', () => { dragging = false; });
-  window.addEventListener('touchmove', e => { if(dragging) setPos(e.touches[0].clientX); }, {passive:true});
-}
-
-initSlider('baSlider1','baBefore1','baDivider1','baHandle1');
-initSlider('baSlider2','baBefore2','baDivider2','baHandle2');
-initSlider('baSlider3','baBefore3','baDivider3','baHandle3');
 
 </script>
 </body>
