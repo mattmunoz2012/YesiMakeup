@@ -6,6 +6,12 @@
 <title>YesiMakeup — Luxury Makeup Artistry · Chicago</title>
 <meta name="description" content="Chicago's premier luxury makeup artist. Bridal, glam, editorial & more. Book your transformation."/>
 
+<meta property="og:title" content="YesiMakeup — Luxury Makeup Artistry · Chicago"/>
+<meta property="og:description" content="Chicago's premier luxury makeup artist. Bridal, glam, editorial & more. Book your transformation."/>
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0x9QAEvyWmzxGH1-zFJu74kRaETU_leZDVxtcGM7HcIy7cOvgeFESMZ_Nq44PG7Lo4IP253MfGcubR0LsIIN1bUjNP-C_-G26PHKBihGIB6TDD4EDIS6Y7TIHzYPXIvmEWPO-kBsZrcQ-rRwgX12hnYe4TE1V4X_rdLTWwL8F8eEqXpOD6BUypkPrLqsZ/s320/49A44649-89DC-4A5E-A0CD-A8C8696DAD8E%201_upscayl_5x_digital-art-4x.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0x9QAEvyWmzxGH1-zFJu74kRaETU_leZDVxtcGM7HcIy7cOvgeFESMZ_Nq44PG7Lo4IP253MfGcubR0LsIIN1bUjNP-C_-G26PHKBihGIB6TDD4EDIS6Y7TIHzYPXIvmEWPO-kBsZrcQ-rRwgX12hnYe4TE1V4X_rdLTWwL8F8eEqXpOD6BUypkPrLqsZ/s320/49A44649-89DC-4A5E-A0CD-A8C8696DAD8E%201_upscayl_5x_digital-art-4x.png"/>
+
 <link rel="icon" type="image/png" sizes="32x32" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwXf0412BSqHkEsHUYDnOoddhkFYyc2_fsvOpZ_UrM_fxgKck-x67VtSHvCDjdvvUfTsmUmdjvPNZiQK891OztngTp8kAeoAY4dFYJcRGxADiRwUy_nQvxk_8cWUO_6iYcUHm5bBn5FDCK-uBmY0mqe8nhSyq0taBiGYGn9bfr9s6NbHNt-cokHr7pSqRv/w640-h640/49A44649-89DC-4A5E-A0CD-A8C8696DAD8E%201_upscayl_5x_digital-art-4x.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwXf0412BSqHkEsHUYDnOoddhkFYyc2_fsvOpZ_UrM_fxgKck-x67VtSHvCDjdvvUfTsmUmdjvPNZiQK891OztngTp8kAeoAY4dFYJcRGxADiRwUy_nQvxk_8cWUO_6iYcUHm5bBn5FDCK-uBmY0mqe8nhSyq0taBiGYGn9bfr9s6NbHNt-cokHr7pSqRv/w640-h640/49A44649-89DC-4A5E-A0CD-A8C8696DAD8E%201_upscayl_5x_digital-art-4x.png">
 
@@ -735,6 +741,41 @@ footer{
   .footer-top{grid-template-columns:1fr;gap:2.5rem}
   .footer-bottom{flex-direction:column;text-align:center}
 }
+.nav-brand{
+  display:flex;align-items:center;gap:0.85rem;
+}
+.brand-mark{
+  width:42px;height:42px;border-radius:50%;
+  object-fit:cover;display:block;
+  border:1px solid rgba(232,221,208,0.22);
+  box-shadow:0 0 22px rgba(232,221,208,0.08);
+  flex-shrink:0;
+}
+.nav-logo-text{
+  font-family:var(--bd);
+  font-size:1.25rem;letter-spacing:0.12em;
+  color:var(--cream);
+  white-space:nowrap;
+}
+.nav-logo-text span{color:var(--gold)}
+.loader-mark{
+  width:88px;height:88px;border-radius:50%;
+  object-fit:cover;display:block;
+  border:1px solid rgba(232,221,208,0.22);
+  box-shadow:0 0 30px rgba(232,221,208,0.08);
+}
+.footer-brand-wrap{
+  display:flex;align-items:center;gap:0.85rem;
+  margin-bottom:1rem;
+}
+.footer-brand-logo{
+  margin-bottom:0;
+}
+@media(max-width:768px){
+  .brand-mark{width:34px;height:34px}
+  .nav-logo-text{font-size:1.05rem}
+  .loader-mark{width:74px;height:74px}
+}
 
 
 </style>
@@ -744,6 +785,7 @@ footer{
 
 <!-- LOADER -->
 <div id="loader">
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0x9QAEvyWmzxGH1-zFJu74kRaETU_leZDVxtcGM7HcIy7cOvgeFESMZ_Nq44PG7Lo4IP253MfGcubR0LsIIN1bUjNP-C_-G26PHKBihGIB6TDD4EDIS6Y7TIHzYPXIvmEWPO-kBsZrcQ-rRwgX12hnYe4TE1V4X_rdLTWwL8F8eEqXpOD6BUypkPrLqsZ/s320/49A44649-89DC-4A5E-A0CD-A8C8696DAD8E%201_upscayl_5x_digital-art-4x.png" alt="YesiMakeup logo" class="loader-mark"/>
   <div class="loader-logo">YesiMakeup</div>
   <div class="loader-bar"></div>
 </div>
@@ -752,7 +794,10 @@ footer{
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo">Yesi<span>Makeup</span></div>
+  <a href="#hero" class="nav-logo nav-brand" aria-label="YesiMakeup home">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0x9QAEvyWmzxGH1-zFJu74kRaETU_leZDVxtcGM7HcIy7cOvgeFESMZ_Nq44PG7Lo4IP253MfGcubR0LsIIN1bUjNP-C_-G26PHKBihGIB6TDD4EDIS6Y7TIHzYPXIvmEWPO-kBsZrcQ-rRwgX12hnYe4TE1V4X_rdLTWwL8F8eEqXpOD6BUypkPrLqsZ/s320/49A44649-89DC-4A5E-A0CD-A8C8696DAD8E%201_upscayl_5x_digital-art-4x.png" alt="YesiMakeup logo" class="brand-mark"/>
+    <div class="nav-logo-text">Yesi<span>Makeup</span></div>
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -1091,7 +1136,10 @@ footer{
 <footer>
   <div class="footer-top">
     <div>
+      <div class="footer-brand-wrap">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0x9QAEvyWmzxGH1-zFJu74kRaETU_leZDVxtcGM7HcIy7cOvgeFESMZ_Nq44PG7Lo4IP253MfGcubR0LsIIN1bUjNP-C_-G26PHKBihGIB6TDD4EDIS6Y7TIHzYPXIvmEWPO-kBsZrcQ-rRwgX12hnYe4TE1V4X_rdLTWwL8F8eEqXpOD6BUypkPrLqsZ/s320/49A44649-89DC-4A5E-A0CD-A8C8696DAD8E%201_upscayl_5x_digital-art-4x.png" alt="YesiMakeup logo" class="brand-mark"/>
       <div class="footer-brand-logo">Yesi<span>Makeup</span></div>
+    </div>
       <p class="footer-brand-desc">Transforming faces, elevating confidence. Chicago's luxury makeup artistry studio serving all occasions.</p>
       <div class="socials">
         <a href="https://www.instagram.com/_yesimakeup?igsh=eGx1dTZ3bmQ5dm5s&utm_source=qr" target="_blank" class="soc" aria-label="Instagram">
