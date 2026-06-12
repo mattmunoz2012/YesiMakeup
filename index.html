@@ -731,8 +731,6 @@ footer{
   footer{padding:4rem 5vw 2rem}
   .footer-top{grid-template-columns:1fr;gap:2.5rem}
   .footer-bottom{flex-direction:column;text-align:center}
-  body{cursor:auto}
-  .cur,.cur-ring{display:none}
 }
 
 
@@ -810,8 +808,7 @@ footer{
       <div class="hero-art">
         <div class="hero-art-ring">
           <div class="hero-art-inner">
-            <!-- IMAGE SLOT: REPLACE_IMAGE_URL_HERE -->
-<img src="PASTE_IMAGE_URL_HERE.jpg" alt="Editable Image"/>
+            <img src="yesica-about.jpg" alt="Yesica Makeup Artist" class="hero-art-logo"/>
           </div>
         </div>
       </div>
@@ -1159,7 +1156,6 @@ footer{
 <script>
 // ── LOADER
 window.addEventListener('load', () => {
-  applyLang('en');
   setTimeout(() => {
     document.getElementById('loader').classList.add('hide');
   }, 1400);
@@ -1316,240 +1312,7 @@ window.addEventListener('scroll',()=>{
   });
 });
 
-// ── LANGUAGE MODAL
-const translations = {
-  en: {
-    'nav-about':'About','nav-services':'Services','nav-portfolio':'Portfolio',
-    'nav-reviews':'Reviews','nav-book':'Book Now',
-    'hero-eyebrow':"Chicago's Premier Makeup Artist",
-    'hero-l1':'Enhancing','hero-l2':'Your Natural','hero-l3':'Beauty.',
-    'hero-sub':'Luxury makeup artistry crafted for your most important moments — bridal, editorial, glam, and everything in between.',
-    'hero-btn1':'Book Your Session','hero-btn2':'View Portfolio',
-    'stats-0':'Happy Clients','stats-1':'Years Experience','stats-2':'Bridal Looks','stats-3':'5-Star Reviews',
-    'about-tag':'About Yesica',
-    'about-title':'Artistry Rooted in<br/><em>Passion & Precision</em>',
-    'about-p1':"I'm Yesica — a Chicago-based makeup artist who believes beauty is one of the most personal forms of self-expression. Every face I touch is treated as a canvas, every brushstroke intentional. My work is a collaboration between technique and feeling, between what looks stunning on camera and what makes you feel undeniably yourself.",
-    'about-p2':'With 5 years of professional experience across bridal, editorial, film, and high-profile events, I bring both technical mastery and genuine artistry to every appointment. I work with all skin tones, all skin types, and all visions.',
-    'about-cta':'Work With Me',
-    'sec-services-label':'Services','sec-services-title':'What I<br/><em>Offer</em>',
-    'svc1-title':'Bridal Makeup','svc1-desc':'From your trial run to walking down the aisle — flawless, long-lasting, and completely you. Includes lashes & airbrush if desired.','svc1-price':'$150',
-    'svc2-title':'Trial Bridal Makeup','svc2-desc':'A full rehearsal before the big day. We test looks, perfect your products, and finalize every detail so you\'re ready to shine.','svc2-price':'$95',
-    'svc3-title':'Bridesmaids Makeup','svc3-desc':'Cohesive, camera-ready looks for your entire bridal party. Everyone glows together on the most important day.','svc3-price':'$90',
-    'svc4-title':'MOB / MOG Makeup','svc4-desc':'Elegant, refined looks for the mother of the bride or groom. Timeless artistry that complements the occasion perfectly.','svc4-price':'$100',
-    'svc5-title':'Special Occasion Makeup','svc5-desc':'For galas, birthdays, anniversaries, or any moment worth celebrating. A polished look that turns heads.','svc5-price':'$100',
-    'svc6-title':'Hair for Bride','svc6-desc':'Stunning bridal hair designed to last all day and night. Every pin, curl, and detail crafted with intention.','svc6-price':'$150',
-    'svc7-title':'Guest / Bridesmaids Hair','svc7-desc':'Beautiful, coordinated hair for the whole party. From soft waves to polished updos — everyone looks their best.','svc7-price':'$95',
-    'svc8-title':'Special Occasion Hair','svc8-desc':'Elevated styling for any event. Whether it\'s a gala or a night out, your hair will be as memorable as the moment.','svc8-price':'$100',
-    'svc9-title':'Glam Waves','svc9-desc':'Luxurious, flowing waves with full volume and movement. Extensions not included — pure styling artistry.','svc9-price':'$100',
-    'svc10-title':'Curled Half Up','svc10-desc':'The perfect balance of romantic and polished. Cascading curls with an elegant half-up finish for any occasion.','svc10-price':'$150',
-    'svc11-title':'Updo\'s','svc11-desc':'Classic and contemporary updo styles sculpted to perfection. Timeless elegance that holds beautifully all day.','svc11-price':'$90',
-    'portfolio-label':'Portfolio','portfolio-title':'Every Face<br/><em>A Canvas</em>',
-    'process-label':'How It Works','process-title':'The<br/><em>Experience</em>',
-    'proc1-title':'Inquiry & Consult','proc1-desc':"Fill out the booking form with your event details, preferred date, and vision. I'll respond within 24 hours to confirm availability and chat through your look.",
-    'proc2-title':'Trial (Bridal Only)','proc2-desc':'Bridal clients get a full trial run before the wedding day. We test looks, confirm products that work with your skin, and finalize every detail.',
-    'proc3-title':'The Appointment','proc3-desc':"I arrive on time, fully stocked, and completely focused on you. Your appointment is a relaxed, luxurious experience — no rushing, only results.",
-    'proc4-title':'Walk Out Glowing','proc4-desc':'Leave feeling like the most beautiful version of yourself — camera-ready, confident, and glowing. Long-lasting looks that hold up all day and night.',
-    'testi-label':'Client Love','testi-title':'They Said<br/><em>It Best</em>',
-    'booking-tag':'Book Your Session',
-    'booking-title':"Let's Create<br/><em>Your Look</em>",
-    'booking-desc':"Dates fill up fast — especially for weddings and events. Send your inquiry early and let's bring your vision to life.",
-    'bd1-title':'Location','bd1-val':'Chicago, IL · On-Location Available',
-    'bd2-title':'Instagram','bd2-val':'@YesiMakeup',
-    'bd3-title':'Hours','bd3-val':'Mon – Sun · By Appointment Only',
-    'bd4-title':'Response Time','bd4-val':'Within 24 hours',
-    'form-fn':'First Name','form-ln':'Last Name','form-email':'Email Address',
-    'form-phone':'Phone Number','form-service':'Service','form-date':'Event Date',
-    'form-time':'Preferred Time','form-msg':'Tell Me Your Vision',
-    'form-ph-fn':'Sofia','form-ph-ln':'Rodriguez','form-ph-email':'sofia@email.com',
-    'form-ph-phone':'(312) 000-0000','form-ph-msg':'Describe your event, inspiration, skin type, or any questions you have...',
-    'form-svc0':'Select a service','form-svc1':'Bridal Makeup — $150','form-svc2':'Trial Bridal Makeup — $95',
-    'form-svc3':'Bridesmaids Makeup — $90','form-svc4':'MOB / MOG Makeup — $100',
-    'form-svc5':'Special Occasion Makeup — $100','form-svc6':'Hair for Bride — $150',
-    'form-svc7':'Guest / Bridesmaids Hair — $95','form-svc8':'Special Occasion Hair — $100',
-    'form-svc9':'Glam Waves — $100','form-svc10':'Curled Half Up — $150','form-svc11':'Updo\'s — $90',
-    'form-submit':'Send Booking Request ✦','form-note':'No payment required to inquire · I respond within 24 hours',
-    'success-title':'Request Received!','success-msg':'Thank you for reaching out. Yesi will respond within 24 hours to confirm your appointment details.',
-    'footer-desc':"Transforming faces, elevating confidence. Chicago's luxury makeup artistry studio serving all occasions.",
-    'footer-col1':'Services','footer-col2':'Navigation','footer-col3':'Contact',
-    'footer-bottom1':'© 2025 YesiMakeup · All rights reserved','footer-bottom2':'Designed with ✦ in Chicago',
-  },
-  es: {
-    'nav-about':'Sobre Mí','nav-services':'Servicios','nav-portfolio':'Portafolio',
-    'nav-reviews':'Reseñas','nav-book':'Reservar',
-    'hero-eyebrow':'La Artista de Maquillaje Favorita de Chicago',
-    'hero-l1':'Realzando','hero-l2':'Tu Belleza','hero-l3':'Natural.',
-    'hero-sub':'Arte de maquillaje de lujo para tus momentos más importantes — bodas, editorial, glam y todo lo demás.',
-    'hero-btn1':'Reserva Tu Sesión','hero-btn2':'Ver Portafolio',
-    'stats-0':'Clientes Felices','stats-1':'Años de Experiencia','stats-2':'Looks de Novia','stats-3':'Reseñas 5 Estrellas',
-    'about-tag':'Sobre Yesica',
-    'about-title':'Arte con <br/><em>Pasión y Precisión</em>',
-    'about-p1':"Soy Yesi — artista de maquillaje en Chicago que cree que la belleza es una de las formas más personales de expresión. Cada rostro que toco es tratado como un lienzo, cada pincelada es intencional. Mi trabajo es una colaboración entre técnica y sentimiento.",
-    'about-p2':'Con 5 años de experiencia profesional en bodas, editorial, cine y eventos de alto perfil, traigo maestría técnica y artisticidad genuina a cada cita. Trabajo con todos los tonos de piel.',
-    'about-cta':'Trabajemos Juntas',
-    'sec-services-label':'Servicios','sec-services-title':'Lo Que<br/><em>Ofrezco</em>',
-    'svc1-title':'Maquillaje de Novia','svc1-desc':'Desde el ensayo hasta el altar — impecable, duradero y completamente tú. Incluye pestañas y airbrush si se desea.','svc1-price':'$150',
-    'svc2-title':'Prueba de Maquillaje Nupcial','svc2-desc':'Un ensayo completo antes del gran día. Probamos looks, perfeccionamos productos y finalizamos cada detalle para que estés lista.','svc2-price':'$95',
-    'svc3-title':'Maquillaje de Damas','svc3-desc':'Looks cohesivos y listos para cámara para toda tu corte de honor. Todas brillan juntas en el día más importante.','svc3-price':'$90',
-    'svc4-title':'Maquillaje MOB / MOG','svc4-desc':'Looks elegantes y refinados para la madre de la novia o el novio. Arte atemporal que complementa la ocasión perfectamente.','svc4-price':'$100',
-    'svc5-title':'Maquillaje de Ocasión Especial','svc5-desc':'Para galas, cumpleaños, aniversarios o cualquier momento que valga la pena celebrar. Un look pulido que llama la atención.','svc5-price':'$100',
-    'svc6-title':'Peinado para Novia','svc6-desc':'Peinado nupcial espectacular diseñado para durar todo el día y la noche. Cada pin, rizo y detalle con intención.','svc6-price':'$150',
-    'svc7-title':'Peinado para Invitadas / Damas','svc7-desc':'Peinados hermosos y coordinados para toda la corte. Desde ondas suaves hasta recogidos — todas lucen increíbles.','svc7-price':'$95',
-    'svc8-title':'Peinado de Ocasión Especial','svc8-desc':'Estilismo elevado para cualquier evento. Ya sea una gala o una noche de salida, tu cabello será tan memorable como el momento.','svc8-price':'$100',
-    'svc9-title':'Ondas Glam','svc9-desc':'Ondas lujosas con volumen y movimiento total. Extensiones no incluidas — puro arte de estilismo.','svc9-price':'$100',
-    'svc10-title':'Medio Recogido con Rizos','svc10-desc':'El equilibrio perfecto entre romántico y pulido. Rizos en cascada con un acabado medio recogido elegante para cualquier ocasión.','svc10-price':'$150',
-    'svc11-title':'Recogidos','svc11-desc':'Estilos de recogido clásicos y contemporáneos esculpidos a la perfección. Elegancia atemporal que dura todo el día.','svc11-price':'$90',
-    'portfolio-label':'Portafolio','portfolio-title':'Cada Rostro<br/><em>Un Lienzo</em>',
-    'process-label':'Cómo Funciona','process-title':'La<br/><em>Experiencia</em>',
-    'proc1-title':'Consulta Inicial','proc1-desc':'Llena el formulario con los detalles de tu evento, fecha y visión. Te respondo en 24 horas para confirmar disponibilidad.',
-    'proc2-title':'Prueba (Solo Novias)','proc2-desc':'Las novias tienen una prueba completa antes del gran día. Probamos looks, confirmamos productos y finalizamos cada detalle.',
-    'proc3-title':'La Cita','proc3-desc':'Llego a tiempo, completamente equipada y enfocada en ti. Tu cita es una experiencia relajada y lujosa — sin prisa, solo resultados.',
-    'proc4-title':'Sal Radiante','proc4-desc':'Sal sintiéndote la versión más bella de ti misma — lista para cámara, segura y brillante. Looks duraderos todo el día y la noche.',
-    'testi-label':'Amor de Clientes','testi-title':'Ellas Lo<br/><em>Dijeron Mejor</em>',
-    'booking-tag':'Reserva Tu Sesión',
-    'booking-title':'Creemos<br/><em>Tu Look</em>',
-    'booking-desc':'Las fechas se llenan rápido — especialmente para bodas y eventos. Envía tu consulta con anticipación y hagamos realidad tu visión.',
-    'bd1-title':'Ubicación','bd1-val':'Chicago, IL · Disponible a Domicilio',
-    'bd2-title':'Instagram','bd2-val':'@YesiMakeup',
-    'bd3-title':'Horario','bd3-val':'Lun – Dom · Solo con Cita',
-    'bd4-title':'Tiempo de Respuesta','bd4-val':'Dentro de 24 horas',
-    'form-fn':'Nombre','form-ln':'Apellido','form-email':'Correo Electrónico',
-    'form-phone':'Número de Teléfono','form-service':'Servicio','form-date':'Fecha del Evento',
-    'form-time':'Hora Preferida','form-msg':'Cuéntame Tu Visión',
-    'form-ph-fn':'Sofía','form-ph-ln':'Rodríguez','form-ph-email':'sofia@correo.com',
-    'form-ph-phone':'(312) 000-0000','form-ph-msg':'Describe tu evento, inspiración, tipo de piel o cualquier pregunta que tengas...',
-    'form-svc0':'Selecciona un servicio','form-svc1':'Maquillaje de Novia — $150','form-svc2':'Prueba de Maquillaje Nupcial — $95',
-    'form-svc3':'Maquillaje de Damas — $90','form-svc4':'Maquillaje MOB / MOG — $100',
-    'form-svc5':'Maquillaje de Ocasión Especial — $100','form-svc6':'Peinado para Novia — $150',
-    'form-svc7':'Peinado para Invitadas / Damas — $95','form-svc8':'Peinado de Ocasión Especial — $100',
-    'form-svc9':'Ondas Glam — $100','form-svc10':'Medio Recogido con Rizos — $150','form-svc11':'Recogidos — $90',
-    'form-submit':'Enviar Solicitud ✦','form-note':'No se requiere pago para consultar · Respondo en 24 horas',
-    'success-title':'¡Solicitud Recibida!','success-msg':'Gracias por contactarme. Yesi te responderá en 24 horas para confirmar los detalles de tu cita.',
-    'footer-desc':'Transformando rostros, elevando confianza. El estudio de maquillaje de lujo de Chicago para toda ocasión.',
-    'footer-col1':'Servicios','footer-col2':'Navegación','footer-col3':'Contacto',
-    'footer-bottom1':'© 2025 YesiMakeup · Todos los derechos reservados','footer-bottom2':'Diseñado con ✦ en Chicago',
-  }
-};
 
-function applyLang(lang){
-  const t = translations[lang];
-  const q = id => document.getElementById(id);
-  const qs = sel => document.querySelector(sel);
-  const qsa = sel => document.querySelectorAll(sel);
-
-  // Nav
-  const navAs = document.querySelectorAll('.nav-links a');
-  const navKeys = ['nav-about','nav-services','nav-book'];
-  navAs.forEach((a,i)=>{ if(navKeys[i] && !a.classList.contains('nav-book')) a.textContent=t[navKeys[i]]; });
-  const navBook = document.querySelector('.nav-book'); if(navBook) navBook.textContent=t['nav-book'];
-  const mobLinks = document.querySelectorAll('.mob-link');
-  mobLinks.forEach((a,i)=>{ const keys=['nav-about','nav-services','nav-book']; if(keys[i]) a.textContent=t[keys[i]]; });
-
-  // Hero
-  const eyebrow = document.querySelector('.hero-eyebrow'); if(eyebrow) eyebrow.childNodes[eyebrow.childNodes.length-1].textContent=t['hero-eyebrow'];
-  const l1=document.querySelector('.hero-headline .l1'); if(l1) l1.textContent=t['hero-l1'];
-  const l2=document.querySelector('.hero-headline .l2'); if(l2) l2.textContent=t['hero-l2'];
-  const l3=document.querySelector('.hero-headline .l3'); if(l3) l3.textContent=t['hero-l3'];
-  const sub=document.querySelector('.hero-sub'); if(sub) sub.textContent=t['hero-sub'];
-  const btns=document.querySelectorAll('.hero-btns a');
-  if(btns[0]) btns[0].querySelector('span').textContent=t['hero-btn1'];
-
-  // Stats
-  const statLabels=document.querySelectorAll('.stat-label');
-  statLabels.forEach((el,i)=>{ if(t['stats-'+i]) el.textContent=t['stats-'+i]; });
-
-  // About
-  const aboutTag=document.querySelector('.about-content .tag'); if(aboutTag) aboutTag.textContent=t['about-tag'];
-  const aboutTitle=document.querySelector('.about-title'); if(aboutTitle) aboutTitle.innerHTML=t['about-title'];
-  const aboutPs=document.querySelectorAll('.about-body');
-  if(aboutPs[0]) aboutPs[0].textContent=t['about-p1'];
-  if(aboutPs[1]) aboutPs[1].textContent=t['about-p2'];
-  const aboutCta=document.querySelector('.about-content .btn-gold span'); if(aboutCta) aboutCta.textContent=t['about-cta'];
-
-  // Services section header
-  const secLabels=document.querySelectorAll('.sec-label');
-  const secTitles=document.querySelectorAll('.sec-title');
-  if(secLabels[0]) secLabels[0].textContent=t['sec-services-label'];
-  if(secTitles[0]) secTitles[0].innerHTML=t['sec-services-title'];
-
-  // Service items
-  const svcItems=document.querySelectorAll('.svc-item');
-  svcItems.forEach((item,i)=>{
-    const n=i+1;
-    const h3=item.querySelector('h3'); if(h3) h3.textContent=t['svc'+n+'-title'];
-    const p=item.querySelector('p'); if(p) p.textContent=t['svc'+n+'-desc'];
-    const price=item.querySelector('.svc-price'); if(price) price.textContent=t['svc'+n+'-price'];
-  });
-
-  // Booking left
-  const bookTag=document.querySelector('.booking-left .tag'); if(bookTag) bookTag.textContent=t['booking-tag'];
-  const bookTitle=document.querySelector('.booking-title'); if(bookTitle) bookTitle.innerHTML=t['booking-title'];
-  const bookDesc=document.querySelector('.booking-desc'); if(bookDesc) bookDesc.textContent=t['booking-desc'];
-  const bdetailTitles=document.querySelectorAll('.bdetail-title');
-  const bdetailVals=document.querySelectorAll('.bdetail-val');
-  ['bd1','bd2','bd3','bd4'].forEach((k,i)=>{
-    if(bdetailTitles[i]) bdetailTitles[i].textContent=t[k+'-title'];
-    if(bdetailVals[i]) bdetailVals[i].textContent=t[k+'-val'];
-  });
-
-  // Form labels & placeholders
-  const fgLabels=document.querySelectorAll('.fg label');
-  const fgKeys=['form-fn','form-ln','form-email','form-phone','form-service','form-date','form-time','form-msg'];
-  fgLabels.forEach((el,i)=>{ if(fgKeys[i]) el.textContent=t[fgKeys[i]]; });
-  const fnIn=document.querySelector('input[name="first_name"]'); if(fnIn) fnIn.placeholder=t['form-ph-fn'];
-  const lnIn=document.querySelector('input[name="last_name"]'); if(lnIn) lnIn.placeholder=t['form-ph-ln'];
-  const emIn=document.querySelector('input[name="email"]'); if(emIn) emIn.placeholder=t['form-ph-email'];
-  const phIn=document.querySelector('input[name="phone"]'); if(phIn) phIn.placeholder=t['form-ph-phone'];
-  const taIn=document.querySelector('textarea[name="message"]'); if(taIn) taIn.placeholder=t['form-ph-msg'];
-  const svcSel=document.querySelector('select[name="service"]');
-  if(svcSel){
-    const opts=svcSel.querySelectorAll('option');
-    ['form-svc0','form-svc1','form-svc2','form-svc3','form-svc4','form-svc5','form-svc6','form-svc7','form-svc8','form-svc9','form-svc10','form-svc11'].forEach((k,i)=>{ if(opts[i]) opts[i].textContent=t[k]; });
-  }
-  const submitBtn=document.querySelector('.form-submit'); if(submitBtn&&!submitBtn.disabled) submitBtn.textContent=t['form-submit'];
-  const formNote=document.querySelector('.form-note'); if(formNote) formNote.textContent=t['form-note'];
-  const successH3=document.querySelector('.form-success h3'); if(successH3) successH3.textContent=t['success-title'];
-  const successP=document.querySelector('.form-success p'); if(successP) successP.textContent=t['success-msg'];
-
-  // Footer
-  const footerDesc=document.querySelector('.footer-brand-desc'); if(footerDesc) footerDesc.textContent=t['footer-desc'];
-  const footerCols=document.querySelectorAll('.footer-col h5');
-  if(footerCols[0]) footerCols[0].textContent=t['footer-col1'];
-  if(footerCols[1]) footerCols[1].textContent=t['footer-col2'];
-  if(footerCols[2]) footerCols[2].textContent=t['footer-col3'];
-  const fbottom=document.querySelectorAll('.footer-bottom span');
-  if(fbottom[0]) fbottom[0].textContent=t['footer-bottom1'];
-
-  document.documentElement.lang = lang;
-}
-
-
-// ── BEFORE & AFTER SLIDERS
-function initSlider(sliderId, beforeId, dividerId, handleId){
-  const slider = document.getElementById(sliderId);
-  const before = document.getElementById(beforeId);
-  const divider = document.getElementById(dividerId);
-  const handle = document.getElementById(handleId);
-  if(!slider) return;
-
-  let dragging = false;
-
-  function setPos(x){
-    const rect = slider.getBoundingClientRect();
-    let pct = ((x - rect.left) / rect.width) * 100;
-    pct = Math.min(Math.max(pct, 2), 98);
-    before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-    divider.style.left = pct + '%';
-    handle.style.left = pct + '%';
-  }
-
-  slider.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); });
-  window.addEventListener('mouseup', () => { dragging = false; });
-  window.addEventListener('mousemove', e => { if(dragging) setPos(e.clientX); });
-
-  slider.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, {passive:true});
-  window.addEventListener('touchend', () => { dragging = false; });
-  window.addEventListener('touchmove', e => { if(dragging) setPos(e.touches[0].clientX); }, {passive:true});
-}
 
 </script>
 </body>
