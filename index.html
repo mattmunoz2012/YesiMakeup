@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -206,21 +208,46 @@ nav.sticky{
   margin-bottom:3rem;
 }
 .hero-btns{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
-.btn-gold{
-  position:relative;overflow:hidden;
+/* ─ Gold CTA Button ─ */
+.btn-gold {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: var(--gold);
+  color: var(--black);
+  font-family: var(--out);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.35s ease;
 }
-.btn-gold::before{
-  content:'';position:absolute;inset:0;
-  background:var(--gold2);
-  transform:translateX(-101%);transition:transform 0.35s ease;
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold2);
+  transform: translateX(-101%);
+  transition: transform 0.35s ease;
 }
-.btn-gold:hover::before{transform:translateX(0)}
-.btn-gold span{position:relative;z-index:1}
-.btn-line::after{
-  content:'→';transition:transform 0.3s;
+.btn-gold:hover::before { transform: translateX(0); }
+.btn-gold span { position: relative; z-index: 1; }
+
+/* ─ Underline Text Link Button ─ */
+.btn-line {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s;
 }
-.btn-line:hover{color:var(--cream)}
-.btn-line:hover::after{transform:translateX(4px)}
+.btn-line::after { content: '→'; transition: transform 0.3s; }
+.btn-line:hover { color: var(--cream); }
+.btn-line:hover::after { transform: translateX(4px); }
 
 .hero-right{
   position:relative;overflow:hidden;
@@ -532,7 +559,81 @@ nav.sticky{
   border-color:var(--gold);color:var(--black);
 }
 
-/* ── PORTFOLIO ── */
+/* ── PREVIOUS WORK ── */
+.prev-work {
+  padding: 8rem 5vw;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative oversized background word */
+.prev-work::before {
+  content: 'WORK';
+  position: absolute;
+  right: -3vw;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--bd);
+  font-style: italic;
+  font-size: clamp(6rem, 14vw, 18rem);
+  font-weight: 700;
+  color: rgba(232, 221, 208, 0.03);
+  line-height: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* 3-column responsive grid */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* Each card is a full clickable link */
+.work-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Image wrapper — 3:4 portrait ratio */
+.work-img-wrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+.work-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  display: block;
+}
+.work-card:hover .work-img-wrap img {
+  transform: scale(1.06);
+}
+
+/* Card labels below the image */
+.work-meta { padding: 1rem 0 0.5rem; }
+.work-cat {
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.work-title {
+  font-family: var(--bd);
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-top: 0.3rem;
+  transition: color 0.3s;
+}
+.work-card:hover .work-title { color: var(--gold); }
 
 
 /* ── BOOKING ── */
@@ -715,7 +816,6 @@ footer{
 
 
 
-.ba-section{padding:5rem 5vw;}
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){
   .hero{grid-template-columns:1fr}
@@ -725,6 +825,7 @@ footer{
   .booking{grid-template-columns:1fr;gap:4rem}
   .stats{grid-template-columns:repeat(2,1fr)}
   .footer-top{grid-template-columns:1fr 1fr}
+  .work-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
   nav{padding:1.2rem 5vw}
@@ -745,6 +846,8 @@ footer{
   .svc-price{display:none}
   .svc-arrow{display:none}
   .svc-info{grid-column:2}
+  .prev-work{padding:5rem 5vw}
+  .work-grid{grid-template-columns:repeat(2,1fr);gap:1rem}
   .booking{padding:5rem 5vw}
   .form-box{padding:2rem 1.5rem}
   .form-row{grid-template-columns:1fr}
@@ -773,6 +876,7 @@ footer{
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
     <li><a href="#booking" class="nav-book">Book Now</a></li>
   </ul>
   <div class="nav-socials">
@@ -792,6 +896,7 @@ footer{
 <div class="mob-menu" id="mobMenu">
   <a href="#about" class="mob-link">About</a>
   <a href="#services" class="mob-link">Services</a>
+  <a href="#work" class="mob-link">Work</a>
   <a href="#booking" class="mob-link">Book Now</a>
   <div class="mob-socials">
     <a href="https://www.instagram.com/_yesimakeup?igsh=eGx1dTZ3bmQ5dm5s&utm_source=qr" target="_blank" class="mob-soc" aria-label="Instagram">
@@ -862,7 +967,6 @@ footer{
   </div>
 </div>
 
-<!-- STATS -->
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-visual reveal from-left">
@@ -1002,6 +1106,116 @@ footer{
       <div class="svc-arrow">→</div>
     </div>
   </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PREVIOUS WORK SECTION
+     ──────────────────────────────────────────────────────────────
+     HOW TO UPDATE YOUR PORTFOLIO:
+     ─ Paste your Blogger image URL into the src="" of each card
+     ─ Paste your Blogger post URL into the href="" of each card
+     ─ Update the category text (work-cat) and title (work-title)
+     ─ To ADD a card: copy any card block and paste it in the grid
+     ─ To REMOVE a card: delete the card block between the comments
+
+     BLOGGER IMAGE LINKS — update this list then paste into cards:
+     ┌─────────────────────────────────────────────────────────┐
+     │  CARD 1 IMG:  https://YOUR-BLOGGER-IMAGE-1.jpg          │
+     │  CARD 1 URL:  https://YOUR-BLOGGER-POST-1               │
+     │  CARD 2 IMG:  https://YOUR-BLOGGER-IMAGE-2.jpg          │
+     │  CARD 2 URL:  https://YOUR-BLOGGER-POST-2               │
+     │  CARD 3 IMG:  https://YOUR-BLOGGER-IMAGE-3.jpg          │
+     │  CARD 3 URL:  https://YOUR-BLOGGER-POST-3               │
+     │  CARD 4 IMG:  https://YOUR-BLOGGER-IMAGE-4.jpg          │
+     │  CARD 4 URL:  https://YOUR-BLOGGER-POST-4               │
+     │  CARD 5 IMG:  https://YOUR-BLOGGER-IMAGE-5.jpg          │
+     │  CARD 5 URL:  https://YOUR-BLOGGER-POST-5               │
+     │  CARD 6 IMG:  https://YOUR-BLOGGER-IMAGE-6.jpg          │
+     │  CARD 6 URL:  https://YOUR-BLOGGER-POST-6               │
+     └─────────────────────────────────────────────────────────┘
+════════════════════════════════════════════════════════════════ -->
+<section class="prev-work" id="work">
+
+  <!-- Section Header -->
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Portfolio</div>
+      <h2 class="sec-title">Previous<br/><em>Work</em></h2>
+    </div>
+    <a href="#booking" class="btn-line">Book Your Look</a>
+  </div>
+
+  <!-- Work Card Grid -->
+  <div class="work-grid">
+
+    <!-- ── CARD 1 ── -->
+    <a href="https://YOUR-BLOGGER-POST-1" target="_blank" class="work-card reveal" data-delay="0">
+      <div class="work-img-wrap">
+        <img src="https://YOUR-BLOGGER-IMAGE-1.jpg" alt="Bridal Glam" loading="lazy"/>
+      </div>
+      <div class="work-meta">
+        <span class="work-cat">Bridal</span>
+        <h3 class="work-title">Bridal Glam</h3>
+      </div>
+    </a>
+
+    <!-- ── CARD 2 ── -->
+    <a href="https://YOUR-BLOGGER-POST-2" target="_blank" class="work-card reveal" data-delay="100">
+      <div class="work-img-wrap">
+        <img src="https://YOUR-BLOGGER-IMAGE-2.jpg" alt="Special Occasion" loading="lazy"/>
+      </div>
+      <div class="work-meta">
+        <span class="work-cat">Special Occasion</span>
+        <h3 class="work-title">Special Occasion Glam</h3>
+      </div>
+    </a>
+
+    <!-- ── CARD 3 ── -->
+    <a href="https://YOUR-BLOGGER-POST-3" target="_blank" class="work-card reveal" data-delay="200">
+      <div class="work-img-wrap">
+        <img src="https://YOUR-BLOGGER-IMAGE-3.jpg" alt="Editorial Look" loading="lazy"/>
+      </div>
+      <div class="work-meta">
+        <span class="work-cat">Editorial</span>
+        <h3 class="work-title">Editorial Look</h3>
+      </div>
+    </a>
+
+    <!-- ── CARD 4 ── -->
+    <a href="https://YOUR-BLOGGER-POST-4" target="_blank" class="work-card reveal" data-delay="0">
+      <div class="work-img-wrap">
+        <img src="https://YOUR-BLOGGER-IMAGE-4.jpg" alt="Bridesmaid Makeup" loading="lazy"/>
+      </div>
+      <div class="work-meta">
+        <span class="work-cat">Bridesmaids</span>
+        <h3 class="work-title">Bridesmaid Glam</h3>
+      </div>
+    </a>
+
+    <!-- ── CARD 5 ── -->
+    <a href="https://YOUR-BLOGGER-POST-5" target="_blank" class="work-card reveal" data-delay="100">
+      <div class="work-img-wrap">
+        <img src="https://YOUR-BLOGGER-IMAGE-5.jpg" alt="Bridal Hair" loading="lazy"/>
+      </div>
+      <div class="work-meta">
+        <span class="work-cat">Hair</span>
+        <h3 class="work-title">Bridal Hair</h3>
+      </div>
+    </a>
+
+    <!-- ── CARD 6 ── -->
+    <a href="https://YOUR-BLOGGER-POST-6" target="_blank" class="work-card reveal" data-delay="200">
+      <div class="work-img-wrap">
+        <img src="https://YOUR-BLOGGER-IMAGE-6.jpg" alt="Glam Waves" loading="lazy"/>
+      </div>
+      <div class="work-meta">
+        <span class="work-cat">Hair</span>
+        <h3 class="work-title">Glam Waves</h3>
+      </div>
+    </a>
+
+  </div><!-- end .work-grid -->
 </section>
 
 
@@ -1146,6 +1360,7 @@ footer{
       <ul>
         <li><a href="#about">About Yesica</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#work">Previous Work</a></li>
         <li><a href="#booking">Book Now</a></li>
       </ul>
     </div>
@@ -1310,7 +1525,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-// ── ACTIVE NAV
+// ── ACTIVE NAV — highlights nav link for the current section on scroll
 const sections=document.querySelectorAll('section[id]');
 const navAs=document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll',()=>{
