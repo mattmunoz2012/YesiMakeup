@@ -1026,7 +1026,7 @@ footer{
       With 5 years of professional experience across bridal, editorial, film, and high-profile events, I bring both technical mastery and genuine artistry to every appointment. I work with all skin tones, all skin types, and all visions.
     </p>
     <div class="about-chips">
-      <span class="chip">Licensed & Certified</span>
+      <span class="chip">Certified</span>
       <span class="chip">Luxury Products</span>
       <span class="chip">On-Location Available</span>
       <span class="chip">All Skin Tones</span>
@@ -1153,25 +1153,21 @@ footer{
      ──────────────────────────────────────────────────────────────
      HOW TO UPDATE YOUR PORTFOLIO:
      ─ Paste your Blogger image URL into the src="" of each card
-     ─ Paste your Blogger post URL into the href="" of each card
      ─ Update the category text (work-cat) and title (work-title)
+     ─ Each card links to #booking and auto-selects its matching
+       service via the data-service="" attribute — update that too
+       if you change what a card represents
      ─ To ADD a card: copy any card block and paste it in the grid
      ─ To REMOVE a card: delete the card block between the comments
 
      BLOGGER IMAGE LINKS — update this list then paste into cards:
      ┌─────────────────────────────────────────────────────────┐
      │  CARD 1 IMG:  https://YOUR-BLOGGER-IMAGE-1.jpg          │
-     │  CARD 1 URL:  https://YOUR-BLOGGER-POST-1               │
      │  CARD 2 IMG:  https://YOUR-BLOGGER-IMAGE-2.jpg          │
-     │  CARD 2 URL:  https://YOUR-BLOGGER-POST-2               │
      │  CARD 3 IMG:  https://YOUR-BLOGGER-IMAGE-3.jpg          │
-     │  CARD 3 URL:  https://YOUR-BLOGGER-POST-3               │
      │  CARD 4 IMG:  https://YOUR-BLOGGER-IMAGE-4.jpg          │
-     │  CARD 4 URL:  https://YOUR-BLOGGER-POST-4               │
      │  CARD 5 IMG:  https://YOUR-BLOGGER-IMAGE-5.jpg          │
-     │  CARD 5 URL:  https://YOUR-BLOGGER-POST-5               │
      │  CARD 6 IMG:  https://YOUR-BLOGGER-IMAGE-6.jpg          │
-     │  CARD 6 URL:  https://YOUR-BLOGGER-POST-6               │
      └─────────────────────────────────────────────────────────┘
 ════════════════════════════════════════════════════════════════ -->
 <section class="prev-work" id="work">
@@ -1189,9 +1185,9 @@ footer{
   <div class="work-grid">
 
     <!-- ── CARD 1 ── -->
-    <a href="" target="_blank" class="work-card reveal" data-delay="0">
+    <a href="#booking" class="work-card reveal" data-delay="0" data-service="Bridal Makeup — $150">
       <div class="work-img-wrap">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDWmouAhIyVlgafzAuMOJ-flYrfxunJZfvwhvQ9Z0Vc80v5XW9ACXScfzE5zTunFG1vbDrepikQlZmpC38NvsUoiagBe5r-rB-ASHAy1rPd_u-M59-O61e3eyIhbfXGnIrQhDDYB4zBWGaPVihqlsXqdW_aUImMOtD4xAdItXj5EXJBTMI2EE-bDUKEwTB/w1200-h1600/IMG_0338.jpg" alt="Bridal Glam" loading="lazy"/>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDWmouAhIyVlgafzAuMOJ-flYrfxunJZfvwhvQ9Z0Vc80v5XW9ACXScfzE5zTunFG1vbDrepikQlZmpC38NvsUoiagBe5r-rB-ASHAy1rPd_u-M59-O61e3eyIhbfXGnIrQhDDYB4zBWGaPVihqlsXqdW_aUImMOtD4xAdItXj5EXJBTMI2EE-bDUKEwTB/w480-h640/IMG_0338.jpg" alt="Bridal Glam" loading="lazy"/>
       </div>
       <div class="work-meta">
         <span class="work-cat">Bridal</span>
@@ -1200,7 +1196,7 @@ footer{
     </a>
 
     <!-- ── CARD 2 ── -->
-    <a href="https://YOUR-BLOGGER-POST-2" target="_blank" class="work-card reveal" data-delay="100">
+    <a href="#booking" class="work-card reveal" data-delay="100" data-service="Special Occasion Makeup — $100">
       <div class="work-img-wrap">
         <img src="https://YOUR-BLOGGER-IMAGE-2.jpg" alt="Special Occasion" loading="lazy"/>
       </div>
@@ -1211,7 +1207,7 @@ footer{
     </a>
 
     <!-- ── CARD 3 ── -->
-    <a href="https://YOUR-BLOGGER-POST-3" target="_blank" class="work-card reveal" data-delay="200">
+    <a href="#booking" class="work-card reveal" data-delay="200" data-service="Editorial Makeup — $120">
       <div class="work-img-wrap">
         <img src="https://YOUR-BLOGGER-IMAGE-3.jpg" alt="Editorial Look" loading="lazy"/>
       </div>
@@ -1222,7 +1218,7 @@ footer{
     </a>
 
     <!-- ── CARD 4 ── -->
-    <a href="https://YOUR-BLOGGER-POST-4" target="_blank" class="work-card reveal" data-delay="0">
+    <a href="#booking" class="work-card reveal" data-delay="0" data-service="Bridesmaids Makeup — $90">
       <div class="work-img-wrap">
         <img src="https://YOUR-BLOGGER-IMAGE-4.jpg" alt="Bridesmaid Makeup" loading="lazy"/>
       </div>
@@ -1233,7 +1229,7 @@ footer{
     </a>
 
     <!-- ── CARD 5 ── -->
-    <a href="https://YOUR-BLOGGER-POST-5" target="_blank" class="work-card reveal" data-delay="100">
+    <a href="#booking" class="work-card reveal" data-delay="100" data-service="Hair for Bride — $150">
       <div class="work-img-wrap">
         <img src="https://YOUR-BLOGGER-IMAGE-5.jpg" alt="Bridal Hair" loading="lazy"/>
       </div>
@@ -1244,7 +1240,7 @@ footer{
     </a>
 
     <!-- ── CARD 6 ── -->
-    <a href="https://YOUR-BLOGGER-POST-6" target="_blank" class="work-card reveal" data-delay="200">
+    <a href="#booking" class="work-card reveal" data-delay="200" data-service="Glam Waves — $100">
       <div class="work-img-wrap">
         <img src="https://YOUR-BLOGGER-IMAGE-6.jpg" alt="Glam Waves" loading="lazy"/>
       </div>
@@ -1322,13 +1318,14 @@ footer{
         </div>
         <div class="fg">
           <label>Service</label>
-          <select name="service" required>
+          <select name="service" id="serviceSelect" required>
             <option value="" disabled selected>Select a service</option>
             <option>Bridal Makeup — $150</option>
             <option>Trial Bridal Makeup — $95</option>
             <option>Bridesmaids Makeup — $90</option>
             <option>MOB / MOG Makeup — $100</option>
             <option>Special Occasion Makeup — $100</option>
+            <option>Editorial Makeup — $120</option>
             <option>Hair for Bride — $150</option>
             <option>Guest / Bridesmaids Hair — $95</option>
             <option>Special Occasion Hair — $100</option>
@@ -1570,6 +1567,18 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',function(e){
     const t=document.querySelector(this.getAttribute('href'));
     if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-70,behavior:'smooth'});}
+  });
+});
+
+// ── PORTFOLIO CARD → AUTO-SELECT SERVICE ON BOOKING FORM
+document.querySelectorAll('.work-card[data-service]').forEach(card=>{
+  card.addEventListener('click',function(){
+    const svc=this.dataset.service;
+    const select=document.getElementById('serviceSelect');
+    if(select&&svc){
+      select.value=svc;
+      select.dispatchEvent(new Event('change'));
+    }
   });
 });
 
