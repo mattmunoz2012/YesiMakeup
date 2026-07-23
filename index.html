@@ -1,11 +1,41 @@
+<!--
+  ════════════════════════════════════════════════════════════════════
+  YESIMAKEUP — WEBSITE SOURCE FILE (single-file site, GitHub Pages)
+  ════════════════════════════════════════════════════════════════════
+  This ONE file is the entire website. It's organized top to bottom as:
+
+    1. <head>   → page title/SEO, favicons, structured data, fonts,
+                  then a big <style> block with ALL of the site's CSS.
+    2. <body>   → the actual page content, section by section, in the
+                  same order they appear on screen:
+                    Loader → Nav → Mobile Menu → Hero → Ticker →
+                    About → Services ("What I Offer") → Previous Work
+                    (portfolio) → Booking (form) → Footer
+    3. <script> → all of the site's interactivity/JS, at the very
+                  bottom of <body> (see the table of contents inside
+                  that <script> tag for exactly what each part does).
+
+  HOW TO FIND SOMETHING:
+    - Every major section in the CSS and in the HTML body has a
+      banner comment like "── SERVICES ──" — search for the name
+      (e.g. "BOOKING", "SERVICES") to jump straight to it.
+    - CSS class names generally match their section, e.g. everything
+      styling the booking form starts with ".booking" or ".fg"/".form-".
+  ════════════════════════════════════════════════════════════════════
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<!-- ── PAGE TITLE + SEO META ── shown in the browser tab and in
+     Google search results -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Chicago Bridal Makeup Artist | YesiMakeup</title>
 <meta name="description" content="Chicago's top bridal & special occasion makeup artist. Flawless looks for weddings, bridesmaids, glam & more. Book Yesica today."/>
 
+<!-- ── FAVICONS ── the little logo shown in browser tabs, bookmarks,
+     and when someone adds the site to their phone's home screen -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -14,6 +44,9 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
 <link rel="manifest" href="/site.webmanifest">
 
+<!-- ── STRUCTURED DATA (SEO) ── invisible to visitors; tells Google
+     "this is a business called YesiMakeup" so it can show richer
+     search results (logo, social links, etc). Not the visible page. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -27,17 +60,42 @@
   ]
 }
 </script>
+
+<!-- ── FONTS ── loads the two custom fonts used everywhere below:
+     Bodoni Moda (serif, italic — headings/logo) and Outfit (sans-serif
+     — body text/buttons). preconnect just speeds up the font download. -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,300;0,6..96,400;0,6..96,700;1,6..96,300;1,6..96,400;1,6..96,700&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
+
 <style>
 
 /* ═══════════════════════════════════════════
    YESIMAKEUP V2 — ULTRA LUXURY EDITORIAL
    Aesthetic: Pat McGrath meets Vogue Paris
    Palette: Obsidian / Champagne / Blush
+   ───────────────────────────────────────────
+   CSS TABLE OF CONTENTS (in order below):
+     - Color/font variables (:root) + global reset
+     - LOADER            — splash screen on page load
+     - NAV SOCIALS / NAV  — top navigation bar
+     - HERO               — big intro headline + photo
+     - TICKER             — scrolling gold service strip
+     - STATS STRIP         — (currently unused, see note)
+     - ABOUT              — "About Yesica" section
+     - SERVICES           — "What I Offer" price list
+     - PREVIOUS WORK      — portfolio photo grid
+     - BOOKING            — booking form + form fields
+     - FOOTER REVIEW STRIP — "leave a Google review" bar
+     - FOOTER             — bottom of page
+     - REVEAL ANIMATIONS   — shared fade/slide-in effect
+     - RESPONSIVE          — mobile/tablet screen adjustments
 ═══════════════════════════════════════════ */
 
+/* ── COLOR / FONT VARIABLES ──
+   Every color and font used across the whole site is defined once
+   here and reused everywhere as var(--name), e.g. var(--gold). To
+   re-theme the whole site, change the values here. */
 :root {
   --black:   #060504;
   --deep:    #0e0b09;
@@ -54,6 +112,10 @@
   --out: 'Outfit', sans-serif;
 }
 
+/* ── GLOBAL RESET / BASE STYLES ──
+   Baseline rules that apply to the whole page: removes default
+   browser spacing, sets the page background/text color, styles link
+   text-selection highlight color, and the thin gold scrollbar. */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
 body{background:var(--black);color:var(--cream)}
@@ -63,7 +125,11 @@ a{text-decoration:none;color:inherit}
 ::-webkit-scrollbar-track{background:var(--black)}
 ::-webkit-scrollbar-thumb{background:var(--gold)}
 
-/* ── LOADER ── */
+/* ── LOADER ──
+   Full-screen black splash screen with the pulsing "YesiMakeup" logo
+   and a sliding progress bar, shown for ~1.4s while the page loads.
+   Faded out by JS — see "PAGE LOAD & SCROLL-IN ANIMATIONS" in the
+   <script> at the bottom of the file. */
 #loader{
   position:fixed;inset:0;z-index:9999;
   background:var(--black);
@@ -91,7 +157,10 @@ a{text-decoration:none;color:inherit}
 
 
 
-/* ── NAV SOCIALS ── */
+/* ── NAV SOCIALS ──
+   The small Instagram/TikTok icons at the top-right of the desktop
+   nav bar. Hidden on mobile (see @media rule below) since the
+   hamburger menu has its own copy of these icons instead. */
 .nav-socials{
   display:flex;align-items:center;gap:0.8rem;
   margin-right:0.5rem;
@@ -100,7 +169,12 @@ a{text-decoration:none;color:inherit}
 .nav-soc:hover{border-color:var(--gold);color:var(--gold);}
 @media(max-width:768px){.nav-socials{display:none;}}
 
-/* ── NAV ── */
+/* ── NAV ──
+   The fixed top navigation bar (logo, About/Services/Work links,
+   gold "Book Now" button). Starts transparent over the hero image,
+   then gains a solid dark background once you scroll (.nav.sticky —
+   toggled by JS). Also includes the hamburger icon + full-screen
+   mobile menu that replace the nav links on small screens. */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
   display:flex;align-items:center;justify-content:space-between;
@@ -166,7 +240,11 @@ nav.sticky{
 .mob-soc svg{width:18px;height:18px;}
 .mob-soc:hover{border-color:var(--gold);color:var(--gold);}
 
-/* ── HERO ── */
+/* ── HERO ──
+   The big full-screen intro at the very top of the page: headline
+   ("Enhancing Your Natural Beauty"), subtext, gold "Book Your
+   Session" button on the left; the rotating circular logo art and
+   "Scroll" hint on the right. */
 .hero{
   min-height:100svh;
   display:grid;
@@ -316,7 +394,10 @@ nav.sticky{
 }
 @keyframes scrollLine{0%,100%{opacity:0.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.1)}}
 
-/* ── TICKER ── */
+/* ── TICKER ──
+   The gold horizontal strip just below the hero that continuously
+   scrolls the full list of service names side to side. Purely
+   decorative/informational — not clickable. */
 .ticker{
   background:var(--gold);
   padding:0.8rem 0;overflow:hidden;
@@ -337,7 +418,13 @@ nav.sticky{
 }
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ── STATS STRIP ── */
+/* ── STATS STRIP ──
+   NOTE: currently unused — there is no matching ".stats" section in
+   the HTML body right now, so none of this is visible on the live
+   page. It was designed to show a row of stat numbers (e.g. "5+
+   Years Experience") that count up when scrolled into view (the JS
+   for that — "STAT COUNTER ANIMATION" — is also still in place).
+   Left here on purpose in case a stats section gets added back. */
 .stats{
   padding:5rem 5vw;
   background:var(--deep);
@@ -369,7 +456,11 @@ nav.sticky{
   text-transform:uppercase;color:var(--muted);
 }
 
-/* ── ABOUT ── */
+/* ── ABOUT ──
+   "About Yesica" section: her photo on the left (.about-visual),
+   bio text and skill "chips" (Certified, Luxury Products, etc.) on
+   the right. The giant faint "BEAUTY" text behind everything is a
+   purely decorative background watermark (::before pseudo-element). */
 .about{
   padding:10rem 5vw;
   display:grid;
@@ -480,7 +571,13 @@ nav.sticky{
 }
 .chip:hover{border-color:var(--gold);color:var(--gold)}
 
-/* ── SERVICES ── */
+/* ── SERVICES ── "What I Offer" price list
+   Styles the numbered row for each service (Bridal Makeup, Hair for
+   Bride, etc): number, name + description, price, and the arrow icon
+   on the right. Rows are clickable — see .svc-item's cursor:pointer
+   below and the matching click handler in the <script> at the bottom
+   ("SERVICE → BOOKING SHORTCUTS") which jumps to Booking and
+   auto-selects that service in the booking form's dropdown. */
 .services{
   padding:8rem 5vw;
   background:var(--deep);
@@ -514,6 +611,7 @@ nav.sticky{
   border-bottom:1px solid var(--border);
   position:relative;overflow:hidden;
   transition:padding-left 0.4s ease;
+  cursor:pointer; /* whole row is clickable — see JS click handler */
 }
 .svc-item::before{
   content:'';
@@ -559,7 +657,12 @@ nav.sticky{
   border-color:var(--gold);color:var(--black);
 }
 
-/* ── PREVIOUS WORK ── */
+/* ── PREVIOUS WORK ── portfolio photo grid
+   Styles the 3-column (2 on tablet) grid of portfolio photos. Each
+   card is a clickable link straight to Booking (see .work-card),
+   and also auto-selects a matching service — see data-service on
+   each card in the HTML, and "SERVICE → BOOKING SHORTCUTS" in the
+   <script> at the bottom of the file. */
 .prev-work {
   padding: 8rem 5vw;
   background: var(--black);
@@ -636,7 +739,11 @@ nav.sticky{
 .work-card:hover .work-title { color: var(--gold); }
 
 
-/* ── BOOKING ── */
+/* ── BOOKING ──
+   The two-column "Let's Create Your Look" section: contact/location
+   details on the left, the actual booking form (.form-box) on the
+   right. Form field styling (inputs, select, submit button, error
+   messages, success message) is grouped further down under "Form". */
 .booking{
   padding:8rem 5vw;
   background:var(--deep);
@@ -683,7 +790,11 @@ nav.sticky{
 }
 .bdetail-val{font-size:0.85rem;color:var(--muted)}
 
-/* Form */
+/* ── BOOKING FORM FIELDS ──
+   Styling for every input/select/textarea in the booking form, the
+   gold submit button, red field-error messages (shown by the JS
+   validation), and the "Request Received!" success message that
+   replaces the form after a successful submit. */
 .form-box{
   background:rgba(255,255,255,0.015);
   border:1px solid var(--border);
@@ -753,7 +864,9 @@ nav.sticky{
 }
 .form-success p{font-size:0.88rem;color:var(--muted)}
 
-/* ── FOOTER REVIEW STRIP ── */
+/* ── FOOTER REVIEW STRIP ──
+   The thin "Wanna review me? → Leave a Google Review" bar that sits
+   just above the main footer content. */
 .footer-review {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -792,7 +905,10 @@ nav.sticky{
   .footer-review{ flex-direction:column; align-items:flex-start; }
 }
 
-/* ── FOOTER ── */
+/* ── FOOTER ──
+   The bottom of the page: brand blurb + social icons, then three
+   link columns (Services, Navigation, Contact), then the copyright
+   line at the very bottom. */
 footer{
   background:var(--black);
   border-top:1px solid var(--border);
@@ -844,7 +960,11 @@ footer{
 .footer-bottom span{font-size:0.72rem;color:var(--muted)}
 .footer-bottom .heart{color:var(--gold)}
 
-/* ── REVEAL ANIMATIONS ── */
+/* ── REVEAL ANIMATIONS ──
+   Shared "fade + slide into place" effect used all over the site.
+   Any element with class="reveal" starts hidden/offset here, then
+   JS adds the "visible" class once it's scrolled into view (see
+   "SCROLL REVEALS" in the <script> at the bottom of the file). */
 .reveal{
   opacity:0;transform:translateY(40px);
   transition:opacity 0.9s ease,transform 0.9s ease;
@@ -855,7 +975,11 @@ footer{
 
 
 
-/* ── RESPONSIVE ── */
+/* ── RESPONSIVE ──
+   Screen-size adjustments, smallest changes first as the window
+   narrows: tablets/small laptops (≤1100px) below, then phones
+   (≤768px) further down. Keep any new mobile tweaks inside these
+   same two blocks rather than adding new ones elsewhere. */
 @media(max-width:1100px){
   .hero{grid-template-columns:1fr}
   .hero-right{display:none}
@@ -901,7 +1025,8 @@ footer{
 <body>
 
 
-<!-- LOADER -->
+<!-- LOADER — full-screen splash screen shown briefly while the page loads
+     (faded out by JS once loading finishes) -->
 <div id="loader">
   <div class="loader-logo">YesiMakeup</div>
   <div class="loader-bar"></div>
@@ -909,7 +1034,8 @@ footer{
 
 
 
-<!-- NAV -->
+<!-- NAV — top navigation bar: logo, page links, social icons, and the
+     hamburger button (mobile only) that opens the menu below -->
 <nav id="nav">
   <div class="nav-logo">Yesi<span>Makeup</span></div>
   <ul class="nav-links">
@@ -931,7 +1057,8 @@ footer{
   </button>
 </nav>
 
-<!-- MOBILE MENU -->
+<!-- MOBILE MENU — full-screen menu that opens when the hamburger
+     button is tapped on small screens (hidden on desktop) -->
 <div class="mob-menu" id="mobMenu">
   <a href="#about" class="mob-link">About</a>
   <a href="#services" class="mob-link">Services</a>
@@ -947,7 +1074,8 @@ footer{
   </div>
 </div>
 
-<!-- HERO -->
+<!-- HERO — big intro section at the top of the page: headline + "Book
+     Your Session" button on the left, rotating logo art on the right -->
 <section class="hero" id="hero">
   <div class="hero-left">
     <div class="hero-eyebrow reveal">Chicago's Premier Makeup Artist</div>
@@ -978,7 +1106,8 @@ footer{
   </div>
 </section>
 
-<!-- TICKER -->
+<!-- TICKER — scrolling gold strip listing every service name (purely
+     decorative; the list is duplicated once so it can loop seamlessly) -->
 <div class="ticker">
   <div class="ticker-track">
     <span>Bridal Makeup</span><span class="sep">✦</span>
@@ -1006,7 +1135,7 @@ footer{
   </div>
 </div>
 
-<!-- ABOUT -->
+<!-- ABOUT — "About Yesica" bio section: photo + bio text + skill chips -->
 <section class="about" id="about">
   <div class="about-visual reveal from-left">
     <div class="about-frame">
@@ -1035,7 +1164,35 @@ footer{
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- ══════════════════════════════════════════════════════════════
+     "WHAT I OFFER" SERVICES SECTION
+     ──────────────────────────────────────────────────────────────
+     Each row below is one service. The row (and its arrow) is fully
+     clickable: clicking anywhere on a row jumps down to the Booking
+     section AND pre-selects that service in the booking form's
+     dropdown automatically (see data-service on each row below, and
+     the matching click handler in the <script> at the bottom of the
+     file, under "3. SERVICE → BOOKING SHORTCUTS").
+
+     HOW TO EDIT A SERVICE:
+       - .svc-num       → the number shown on the left (01, 02, ...)
+       - <h3>            → service name
+       - <p>              → short description
+       - .svc-price      → the price shown on the right
+       - data-service=""  → MUST exactly match one of the <option>
+                            values in the booking form's Service
+                            dropdown (search this file for
+                            id="serviceSelect" to find it), including
+                            the em dash "—" and price, or the
+                            auto-select won't find a match.
+
+     HOW TO ADD/REMOVE A SERVICE:
+       - Copy/paste or delete one whole ".svc-item" block below.
+       - Also add/remove the matching <option> in the booking form's
+         dropdown (id="serviceSelect"), and optionally the matching
+         <span> entry in the scrolling TICKER above and the
+         "Services" list in the FOOTER, so everything stays in sync.
+     ══════════════════════════════════════════════════════════════ -->
 <section class="services" id="services">
   <div class="sec-head reveal">
     <div>
@@ -1045,7 +1202,7 @@ footer{
     <a href="#booking" class="btn-line">Book a service</a>
   </div>
   <div class="services-list">
-    <div class="svc-item reveal">
+    <div class="svc-item reveal" data-service="Bridal Makeup — $150">
       <div class="svc-num">01</div>
       <div class="svc-info">
         <h3>Bridal Makeup</h3>
@@ -1054,7 +1211,7 @@ footer{
       <div class="svc-price">$150</div>
       <div class="svc-arrow">→</div>
     </div>
-    <div class="svc-item reveal">
+    <div class="svc-item reveal" data-service="Trial Bridal Makeup — $95">
       <div class="svc-num">02</div>
       <div class="svc-info">
         <h3>Trial Bridal Makeup</h3>
@@ -1063,7 +1220,7 @@ footer{
       <div class="svc-price">$95</div>
       <div class="svc-arrow">→</div>
     </div>
-    <div class="svc-item reveal">
+    <div class="svc-item reveal" data-service="Bridesmaids Makeup — $90">
       <div class="svc-num">03</div>
       <div class="svc-info">
         <h3>Bridesmaids Makeup</h3>
@@ -1072,7 +1229,7 @@ footer{
       <div class="svc-price">$90</div>
       <div class="svc-arrow">→</div>
     </div>
-    <div class="svc-item reveal">
+    <div class="svc-item reveal" data-service="MOB / MOG Makeup — $100">
       <div class="svc-num">04</div>
       <div class="svc-info">
         <h3>MOB / MOG Makeup</h3>
@@ -1081,7 +1238,7 @@ footer{
       <div class="svc-price">$100</div>
       <div class="svc-arrow">→</div>
     </div>
-    <div class="svc-item reveal">
+    <div class="svc-item reveal" data-service="Special Occasion Makeup — $100">
       <div class="svc-num">05</div>
       <div class="svc-info">
         <h3>Special Occasion Makeup</h3>
@@ -1090,7 +1247,7 @@ footer{
       <div class="svc-price">$100</div>
       <div class="svc-arrow">→</div>
     </div>
-    <div class="svc-item reveal">
+    <div class="svc-item reveal" data-service="Hair for Bride — $150">
       <div class="svc-num">06</div>
       <div class="svc-info">
         <h3>Hair for Bride</h3>
@@ -1099,7 +1256,7 @@ footer{
       <div class="svc-price">$150</div>
       <div class="svc-arrow">→</div>
     </div>
-    <div class="svc-item reveal">
+    <div class="svc-item reveal" data-service="Guest / Bridesmaids Hair — $95">
       <div class="svc-num">07</div>
       <div class="svc-info">
         <h3>Guest / Bridesmaids Hair</h3>
@@ -1108,7 +1265,7 @@ footer{
       <div class="svc-price">$95</div>
       <div class="svc-arrow">→</div>
     </div>
-    <div class="svc-item reveal">
+    <div class="svc-item reveal" data-service="Special Occasion Hair — $100">
       <div class="svc-num">08</div>
       <div class="svc-info">
         <h3>Special Occasion Hair</h3>
@@ -1117,7 +1274,7 @@ footer{
       <div class="svc-price">$100</div>
       <div class="svc-arrow">→</div>
     </div>
-    <div class="svc-item reveal">
+    <div class="svc-item reveal" data-service="Glam Waves — $100">
       <div class="svc-num">09</div>
       <div class="svc-info">
         <h3>Glam Waves</h3>
@@ -1126,7 +1283,7 @@ footer{
       <div class="svc-price">$100</div>
       <div class="svc-arrow">→</div>
     </div>
-    <div class="svc-item reveal">
+    <div class="svc-item reveal" data-service="Curled Half Up — $150">
       <div class="svc-num">10</div>
       <div class="svc-info">
         <h3>Curled Half Up</h3>
@@ -1135,7 +1292,7 @@ footer{
       <div class="svc-price">$150</div>
       <div class="svc-arrow">→</div>
     </div>
-    <div class="svc-item reveal">
+    <div class="svc-item reveal" data-service="Updo's — $90">
       <div class="svc-num">11</div>
       <div class="svc-info">
         <h3>Updo's</h3>
@@ -1258,7 +1415,19 @@ footer{
 </section>
 
 
-<!-- BOOKING -->
+<!-- ══════════════════════════════════════════════════════════════
+     BOOKING SECTION
+     ──────────────────────────────────────────────────────────────
+     Left side: contact/location details. Right side: the actual
+     booking form, which submits to Formspree (see the form's
+     action="" URL) via JS (no page reload — see "4. BOOKING FORM"
+     in the <script> at the bottom of the file) and shows a
+     "Request Received!" message on success.
+
+     The Service dropdown (id="serviceSelect") gets auto-selected
+     whenever someone clicks a service row in "What I Offer" or a
+     photo in "Previous Work" — see those sections for details.
+     ══════════════════════════════════════════════════════════════ -->
 <section class="booking" id="booking">
   <div class="booking-left">
     <div class="tag reveal">Book Your Session</div>
@@ -1364,7 +1533,8 @@ footer{
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER — brand blurb + socials, link columns (Services/Navigation/
+     Contact), Google review strip, and the copyright line -->
 <footer>
   <div class="footer-top">
     <div>
@@ -1429,38 +1599,47 @@ footer{
 </footer>
 
 <script>
+/* ══════════════════════════════════════════════════════════════
+   SITE SCRIPT — TABLE OF CONTENTS
+   ──────────────────────────────────────────────────────────────
+   1. PAGE LOAD & SCROLL-IN ANIMATIONS
+        - Loader fade-out
+        - Scroll reveals (.reveal fade/slide-in as you scroll)
+        - Stat counter animation (currently unused, see note)
+   2. NAVIGATION
+        - Sticky nav background on scroll
+        - Hamburger mobile menu open/close
+        - Smooth scroll for every #anchor link on the page
+        - Active nav link highlight on scroll
+   3. SERVICE → BOOKING SHORTCUTS
+        - "Previous Work" portfolio card click
+        - "What I Offer" service row click
+   4. BOOKING FORM
+        - Event date can't be set in the past
+        - Phone field only accepts numbers/() -+
+        - Form validation + Formspree submit
+════════════════════════════════════════════════════════════════ */
+
+// ══════════════════════════════════════════════════════════════
+// 1. PAGE LOAD & SCROLL-IN ANIMATIONS
+// ══════════════════════════════════════════════════════════════
+
 // ── LOADER
+// What it is: the full-screen "YesiMakeup" splash screen (#loader in HTML).
+// What it does: waits for the page to fully load, then (after a fixed
+// 1.4s minimum so it doesn't just flash) fades it out via the .hide class.
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('loader').classList.add('hide');
   }, 1400);
 });
 
-// ── STICKY NAV
-const nav = document.getElementById('nav');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('sticky', window.scrollY>60);
-});
-
-// ── HAMBURGER
-const ham = document.getElementById('ham');
-const mob = document.getElementById('mobMenu');
-ham.addEventListener('click',()=>{
-  mob.classList.toggle('open');
-  const s=ham.querySelectorAll('span');
-  const open=mob.classList.contains('open');
-  s[0].style.transform=open?'translateY(6px) rotate(45deg)':'';
-  s[1].style.opacity=open?'0':'';
-  s[2].style.transform=open?'translateY(-6px) rotate(-45deg)':'';
-});
-document.querySelectorAll('.mob-link').forEach(l=>{
-  l.addEventListener('click',()=>{
-    mob.classList.remove('open');
-    ham.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});
-  });
-});
-
 // ── SCROLL REVEALS
+// What it is: the fade-up/slide-in effect used all over the page on any
+// element with the "reveal" class (headlines, cards, form, etc).
+// What it does: watches for each .reveal element to enter the viewport,
+// then adds the "visible" class (CSS handles the actual animation).
+// A data-delay="100" attribute on an element staggers its entrance.
 const revEls = document.querySelectorAll('.reveal');
 const revObs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
@@ -1473,7 +1652,13 @@ const revObs = new IntersectionObserver(entries=>{
 },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
 revEls.forEach(el=>revObs.observe(el));
 
-// ── COUNTER ANIMATION
+// ── STAT COUNTER ANIMATION
+// What it is: a number that counts up from 0 to a data-target value
+// (e.g. "5+ years experience") when its container scrolls into view.
+// NOTE: not currently active — there is no ".stats" section in the HTML
+// right now, so there's nothing for this to attach to. Left in place on
+// purpose: if a stats section with .stat-item / [data-target] elements
+// is added back to the page, this will work automatically.
 function animCount(el, target, suffix=''){
   let start=0;
   const dur=2000, step=16;
@@ -1499,14 +1684,137 @@ const statObs=new IntersectionObserver(entries=>{
 },{threshold:0.5});
 document.querySelectorAll('.stat-item').forEach(s=>statObs.observe(s));
 
-// ── DATE MIN
+
+// ══════════════════════════════════════════════════════════════
+// 2. NAVIGATION
+// ══════════════════════════════════════════════════════════════
+
+// ── STICKY NAV
+// What it does: once you scroll past 60px, adds the "sticky" class to
+// the <nav> bar so it gets a solid background + border (see CSS).
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('sticky', window.scrollY>60);
+});
+
+// ── HAMBURGER MENU (mobile)
+// What it does: toggles the full-screen mobile menu open/closed and
+// morphs the 3-line icon into an "X". Also auto-closes the menu when
+// any link inside it is tapped, so it doesn't stay open after navigating.
+const ham = document.getElementById('ham');
+const mob = document.getElementById('mobMenu');
+ham.addEventListener('click',()=>{
+  mob.classList.toggle('open');
+  const s=ham.querySelectorAll('span');
+  const open=mob.classList.contains('open');
+  s[0].style.transform=open?'translateY(6px) rotate(45deg)':'';
+  s[1].style.opacity=open?'0':'';
+  s[2].style.transform=open?'translateY(-6px) rotate(-45deg)':'';
+});
+document.querySelectorAll('.mob-link').forEach(l=>{
+  l.addEventListener('click',()=>{
+    mob.classList.remove('open');
+    ham.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});
+  });
+});
+
+// ── SMOOTH ANCHOR SCROLL
+// What it does: applies to EVERY link on the page that points to an
+// on-page #section — nav links, "Book Now" buttons, portfolio cards,
+// service rows, footer links, etc. Instead of jumping instantly, the
+// page glides down smoothly. The "-70" offset keeps the fixed nav bar
+// from covering the top of whichever section it scrolls to.
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-70,behavior:'smooth'});}
+  });
+});
+
+// ── ACTIVE NAV HIGHLIGHT
+// What it does: as you scroll, figures out which section is currently
+// in view and colors that section's nav link gold. Clears the color
+// off every other link first so only one is ever highlighted.
+const sections=document.querySelectorAll('section[id]');
+const navAs=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
+  navAs.forEach(a=>{
+    a.style.color='';
+    if(a.getAttribute('href')==='#'+cur&&!a.classList.contains('nav-book'))
+      a.style.color='var(--gold)';
+  });
+});
+
+
+// ══════════════════════════════════════════════════════════════
+// 3. SERVICE → BOOKING SHORTCUTS
+// What this section does: lets a client click a service anywhere on
+// the site (a portfolio photo, or a row in "What I Offer") and get
+// carried straight to the Booking form with that service already
+// selected in the dropdown — no manual re-picking required.
+// ══════════════════════════════════════════════════════════════
+
+// ── "PREVIOUS WORK" PORTFOLIO CARD CLICK
+// What it is: each portfolio photo in the Previous Work section is a
+// link with a data-service="..." attribute (set in the HTML) that
+// exactly matches one of the <option> values in the booking form's
+// Service dropdown (#serviceSelect).
+// What it does: on click, sets the dropdown to that matching service.
+// (The actual jump to #booking happens via the Smooth Anchor Scroll
+// handler above, since these cards are href="#booking" links.)
+document.querySelectorAll('.work-card[data-service]').forEach(card=>{
+  card.addEventListener('click',function(){
+    const svc=this.dataset.service;
+    const select=document.getElementById('serviceSelect');
+    if(select&&svc){
+      select.value=svc;
+      select.dispatchEvent(new Event('change'));
+    }
+  });
+});
+
+// ── "WHAT I OFFER" SERVICE ROW CLICK
+// What it is: same data-service matching trick as the portfolio cards,
+// but applied to each row in the "What I Offer" price list. Clicking
+// anywhere on a row — including its arrow icon, since the arrow sits
+// inside the row and clicks bubble up to it — counts as clicking the row.
+// What it does: selects the matching service in the booking dropdown,
+// then smooth-scrolls down to the Booking section (these rows are plain
+// containers, not links, so the scroll has to be triggered manually here).
+document.querySelectorAll('.svc-item[data-service]').forEach(item=>{
+  item.addEventListener('click',function(){
+    const svc=this.dataset.service;
+    const select=document.getElementById('serviceSelect');
+    if(select&&svc){
+      select.value=svc;
+      select.dispatchEvent(new Event('change'));
+    }
+    const target=document.getElementById('booking');
+    if(target){
+      window.scrollTo({top:target.offsetTop-70,behavior:'smooth'});
+    }
+  });
+});
+
+
+// ══════════════════════════════════════════════════════════════
+// 4. BOOKING FORM
+// ══════════════════════════════════════════════════════════════
+
+// ── EVENT DATE MINIMUM
+// What it does: stops clients from picking a date that's already passed
+// by setting the date input's minimum value to today.
 const dateInput=document.querySelector('input[type="date"]');
 if(dateInput){
   const today=new Date().toISOString().split('T')[0];
   dateInput.min=today;
 }
 
-// ── PHONE NUMBER — numbers only
+// ── PHONE NUMBER FORMATTING
+// What it does: only allows digits and the characters ( ) - + and spaces
+// to be typed or pasted into the phone field — blocks anything else.
 const phoneInput=document.querySelector('input[type="tel"]');
 if(phoneInput){
   phoneInput.addEventListener('keypress',e=>{
@@ -1517,7 +1825,14 @@ if(phoneInput){
   });
 }
 
-// ── BOOKING FORM
+// ── FORM VALIDATION + SUBMIT
+// What it does:
+//   1. Clears any old error messages/red borders from a previous attempt.
+//   2. Checks every [required] field is filled in; if not, shows a red
+//      border + a specific error message under that field for 5 seconds.
+//   3. If everything's valid, submits the form to Formspree in the
+//      background (no page reload) and shows the "Request Received"
+//      success message (#formSuccess), or an error message on failure.
 document.getElementById('bookForm').addEventListener('submit',async e=>{
   e.preventDefault();
   // Clear old errors
@@ -1565,41 +1880,6 @@ document.getElementById('bookForm').addEventListener('submit',async e=>{
     btn.disabled=false;
   }
 });
-
-// ── SMOOTH ANCHOR SCROLL
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',function(e){
-    const t=document.querySelector(this.getAttribute('href'));
-    if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-70,behavior:'smooth'});}
-  });
-});
-
-// ── PORTFOLIO CARD → AUTO-SELECT SERVICE ON BOOKING FORM
-document.querySelectorAll('.work-card[data-service]').forEach(card=>{
-  card.addEventListener('click',function(){
-    const svc=this.dataset.service;
-    const select=document.getElementById('serviceSelect');
-    if(select&&svc){
-      select.value=svc;
-      select.dispatchEvent(new Event('change'));
-    }
-  });
-});
-
-// ── ACTIVE NAV — highlights nav link for the current section on scroll
-const sections=document.querySelectorAll('section[id]');
-const navAs=document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',()=>{
-  let cur='';
-  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
-  navAs.forEach(a=>{
-    a.style.color='';
-    if(a.getAttribute('href')==='#'+cur&&!a.classList.contains('nav-book'))
-      a.style.color='var(--gold)';
-  });
-});
-
-
 
 </script>
 </body>
